@@ -9,12 +9,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import {MatInputModule} from '@angular/material/input';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginBoardComponent,
-    SignInComponent
+    SignInComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

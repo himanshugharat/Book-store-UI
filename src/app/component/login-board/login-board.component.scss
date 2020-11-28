@@ -39,10 +39,15 @@ button{
     //width: 30px;
     font-size: large;
 }
+button:hover{
+    //width: 30px;
+    font-size: smaller;
+}
 img{
 width:200px ;
 border-radius: 50%;
 margin-left: 10%;
+padding-top: 7%;
 }
 .title{
     margin-left: 10%;
