@@ -1,19 +1,23 @@
-<form class="signin">
-<mat-form-field class="example-form-field" appearance="outline" autocomplete="off">
-    <mat-label>FullName</mat-label>
-    <input matInput type="text">
-</mat-form-field>
-<mat-form-field class="example-form-field" appearance="outline" autocomplete="off">
-    <mat-label>EmailId</mat-label>
-    <input matInput type="text">
-</mat-form-field>
-<mat-form-field class="example-form-field" appearance="outline" autocomplete="off">
-    <mat-label>Password</mat-label>
-    <input matInput type="password">
-</mat-form-field>
-<mat-form-field class="example-form-field" appearance="outline" autocomplete="off">
-    <mat-label>Phone Number</mat-label>
-    <input matInput type="number">
-</mat-form-field>
-<button mat-raised-button color="warn">signUp</button>
+<form class="signin" [formGroup]='signup'>
+    <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>FullName</mat-label>
+        <input matInput type="text" formControlName="name" autocomplete="off" required>
+        <mat-error *ngIf="signup.controls['name'].invalid">{{validName()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>EmailId</mat-label>
+        <input matInput type="text" formControlName="email" autocomplete="off" required>
+        <mat-error *ngIf="signup.controls['email'].invalid">{{validEmail()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" autocomplete="off" required>
+        <mat-error *ngIf="signup.controls['password'].invalid">{{validPassword()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="number" formControlName="phone" autocomplete="off" required>
+        <mat-error *ngIf="signup.controls['phone'].invalid">{{validNumber()}}</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="warn" [disabled]="!signup.valid">signUp</button>
 </form>
