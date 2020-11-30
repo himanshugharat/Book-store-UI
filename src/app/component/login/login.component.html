@@ -1,13 +1,16 @@
-<form class="signin">
-    <mat-form-field class="example-form-field" appearance="outline" autocomplete="off">
+<form class="signin" [formGroup]="login">
+    <mat-form-field class="example-form-field" appearance="outline" >
         <mat-label>Email</mat-label>
-        <input matInput type="email">
+        <input matInput type="email" formControlName="email" autocomplete="off" required>
+        <mat-error *ngIf="login.controls['email'].invalid">{{validEmail()}}</mat-error>
     </mat-form-field>
-    <mat-form-field class="example-form-field" appearance="outline" autocomplete="off">
+    <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput type="password">
+        <span><input matInput type="password" formControlName="password" autocomplete="off" required></span>
+        <mat-error *ngIf="login.controls['password'].invalid">{{validPassword()}}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="warn">signUp</button>
+     
+    <button mat-raised-button color="warn" [disabled]="!login.valid">signUp</button>
     <div class="help">OR</div>
     <span class="otherLogin"><button  class="button" mat-raised-button color="primary">facebook</button>
     <button class="button" mat-raised-button color="gray">google</button></span>
