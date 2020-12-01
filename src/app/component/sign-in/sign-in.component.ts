@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,9 +16,25 @@ export class SignInComponent implements OnInit {
     email: new FormControl("", Validators.email),
     password: new FormControl("", Validators.minLength(8))
   })
-  constructor() { }
+  item
+  constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.firebaseService.getUser()
+
+  }
+
+
+
+  onSubmit(value) {
+    this.firebaseService.createUser(value)
+      .then(
+        res => {
+          this.snackbar.open('register successfully', 'sucess')
+        }
+      ).catch(err=>
+        this.snackbar.open('unable to register', 'failed')
+      )
   }
   validEmail() {
     return this.signup.get('email').hasError('required') ?

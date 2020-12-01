@@ -14,7 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AngularFireModule.initializeApp(environment.firebase,'bookstore'),
+    AngularFirestoreModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
