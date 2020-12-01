@@ -13,11 +13,12 @@ import { LoginComponent } from './component/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatIconModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    AngularFireModule.initializeApp(environment.firebase,'bookstore'),
+    AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
     AngularFirestoreModule,
     MatSnackBarModule
   ],

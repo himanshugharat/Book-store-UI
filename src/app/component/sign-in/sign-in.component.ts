@@ -16,23 +16,19 @@ export class SignInComponent implements OnInit {
     email: new FormControl("", Validators.email),
     password: new FormControl("", Validators.minLength(8))
   })
-  item
   constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.firebaseService.getUser()
 
   }
-
-
-
   onSubmit(value) {
     this.firebaseService.createUser(value)
       .then(
         res => {
           this.snackbar.open('register successfully', 'sucess')
         }
-      ).catch(err=>
+      ).catch(err =>
         this.snackbar.open('unable to register', 'failed')
       )
   }

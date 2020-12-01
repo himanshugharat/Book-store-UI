@@ -24,11 +24,13 @@ export class FirebaseCrudService {
       password: value.password
     });
   }
+  
   getUser() {
     this.itemsCollection = this.db.collection<Item>('user');
     this.items = this.itemsCollection.valueChanges();
     this.items.forEach(data => console.log(data))
   }
+
   loginUser(value) {
     return this.db.collection<Item>('user', ref => ref.where('email', '==', value.email)
       .where('password', '==', value.password)).valueChanges({ idField: 'docId' })
