@@ -22,7 +22,7 @@ export class FirebaseCrudService {
     });
   }
 
-  
+
   // createUsera() {
   //   this.menu.forEach((obj)=>{
   //    this.db.collection('book').add({

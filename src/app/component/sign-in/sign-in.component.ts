@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit {
 
   }
   onSubmit(value) {
-   let userData = {
+    let userData = {
       email: value.email,
       name: value.name,
       number: value.phone,

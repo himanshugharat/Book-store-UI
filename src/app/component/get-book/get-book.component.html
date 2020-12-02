@@ -1,6 +1,6 @@
- <div class="mainbody">
- <div fxLayout="row wrap" fxLayoutAlign="center">
-<span class="title">Books ({{book.length}}item)</span>
+<div class="mainbody">
+  <div fxLayout="row wrap" fxLayoutAlign="center">
+    <span class="title">Books ({{book.length}}item)</span>
     <span class="toolbar"></span>
     <mat-form-field appearance="outline">
       <mat-label>sort by</mat-label>
@@ -10,31 +10,30 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-</div>
-<div fxLayout="row wrap" fxLayoutAlign="center">
-<div *ngFor="let book of book | paginate: { itemsPerPage: 12, currentPage: page }" class="main"  fxLayoutGap="20px">
-<mat-card class="grid-item" >
-    <mat-card-content class="cover">
-    <img  mat-card-image src={{book.image}} >
-</mat-card-content>
-    <mat-card-content class="detail">
-        <mat-card-title>
-        {{book.title}}
-    </mat-card-title>
-    <mat-card-subtitle>
-       by {{book.author}}
-    </mat-card-subtitle>
-    <p>
-        <button mat-raised-button color="primary" disabled
-             matBadgePosition="before" matBadgeColor="accent">
-          4.5 &#9733;
-        </button>({{book.quantity}})
-      </p>
-      <span><b>Rs {{book.price}} <del>{{book.price+100}}</del></b>
-    </span>
-      </mat-card-content>
-</mat-card>
-</div>
-<pagination-controls (pageChange)="page = $event" ></pagination-controls>
-</div>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="center">
+    <div *ngFor="let book of book | paginate: { itemsPerPage: 12, currentPage: page }" class="main" fxLayoutGap="20px">
+      <mat-card class="grid-item">
+        <mat-card-content class="cover">
+          <img mat-card-image src={{book.image}}>
+        </mat-card-content>
+        <mat-card-content class="detail">
+          <mat-card-title>
+            {{book.title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            by {{book.author}}
+          </mat-card-subtitle>
+          <p>
+            <button mat-raised-button color="primary" disabled matBadgePosition="before" matBadgeColor="accent">
+              4.5 &#9733;
+            </button>({{book.quantity}})
+          </p>
+          <span><b>Rs {{book.price}} <del>{{book.price+100}}</del></b>
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
 </div>

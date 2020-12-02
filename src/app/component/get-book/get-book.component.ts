@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 interface bookBy {
   value: string;
@@ -15,22 +15,22 @@ interface bookBy {
 
 export class GetBookComponent implements OnInit {
 
-  constructor(public bookservice:FirebaseCrudService) { }
-book=[]
-page: number = 1;
+  constructor(public bookservice: FirebaseCrudService) { }
+  book = []
+  page: number = 1;
   ngOnInit(): void {
     this.getData()
   }
-  getData(){
-    this.bookservice.getUser('book').subscribe(re=>{
-      re.forEach(book=>this.book.push(book))
+  getData() {
+    this.bookservice.getUser('book').subscribe(re => {
+      re.forEach(book => this.book.push(book))
     })
     console.log(this.book)
-  
+
   }
   data: bookBy[] = [
-    {value: 'title-0', viewValue: 'sort by title'},
-    {value: 'author-1', viewValue: 'sort by author'},
-    {value: 'price-2', viewValue: 'sort by price'}
+    { value: 'title-0', viewValue: 'sort by title' },
+    { value: 'author-1', viewValue: 'sort by author' },
+    { value: 'price-2', viewValue: 'sort by price' }
   ];
 }
