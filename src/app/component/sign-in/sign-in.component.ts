@@ -19,11 +19,17 @@ export class SignInComponent implements OnInit {
   constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.firebaseService.getUser()
+    this.firebaseService.getUser("user")
 
   }
   onSubmit(value) {
-    this.firebaseService.createUser(value)
+   let userData = {
+      email: value.email,
+      name: value.name,
+      number: value.phone,
+      password: value.password
+    }
+    this.firebaseService.createUser(userData)
       .then(
         res => {
           this.snackbar.open('register successfully', 'sucess')

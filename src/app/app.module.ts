@@ -18,6 +18,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { GetBookComponent } from './component/get-book/get-book.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 @NgModule({
   declarations: [
@@ -25,12 +32,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginBoardComponent,
     SignInComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashboardComponent,
+    GetBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
     MatInputModule,
@@ -39,7 +49,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatToolbarModule,
     AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
     AngularFirestoreModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBadgeModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

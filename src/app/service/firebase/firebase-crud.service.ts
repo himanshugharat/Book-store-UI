@@ -18,17 +18,30 @@ export class FirebaseCrudService {
 
   createUser(value) {
     return this.db.collection('user').add({
-      email: value.email,
-      name: value.name,
-      number: value.phone,
-      password: value.password
+      value
     });
   }
+
   
-  getUser() {
-    this.itemsCollection = this.db.collection<Item>('user');
+  // createUsera() {
+  //   this.menu.forEach((obj)=>{
+  //    this.db.collection('book').add({
+  //     id: obj.id,
+  //     author: obj.author,
+  //     title: obj.title,
+  //     image: obj.image,
+  //     quantity: obj.quantity,
+  //     price: obj.price,
+  //     description: obj.description
+  //    })
+  //   });
+  // }
+
+  getUser(name) {
+    this.itemsCollection = this.db.collection<Item>(name);
     this.items = this.itemsCollection.valueChanges();
     this.items.forEach(data => console.log(data))
+    return this.items
   }
 
   loginUser(value) {

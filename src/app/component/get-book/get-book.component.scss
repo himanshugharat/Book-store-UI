@@ -1,0 +1,60 @@
+.main {
+    display: inline-grid;
+    padding: 10px;
+  //  margin-left: 10px;
+    
+  }
+  .grid-item{
+    max-width: 275px;
+    width: auto;
+   // max-height: 250px;
+   // height: 275px;
+    
+   display: grid;
+   // margin-top: 2%;
+    //margin-left: 30px;
+   // border-radius: 10px;
+    border: 0.7px solid rgba(0, 0, 0, 0.24);
+  }
+  mat-card-title{
+    white-space: nowrap; 
+    width: 235px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  img{
+      width: 100px;
+      height: 150px;
+      margin-top: 10px;
+      padding: 2px;
+      margin-bottom: 0;
+      margin-left: 30%;
+  }
+  .mat-card-image:first-child{
+      margin-top: 0;
+  }
+  .cover{
+    background-color: rgba(128, 128, 128, 0.534);
+  }
+  .mat-card{
+      padding: 0;
+  }
+  .details{
+    padding: 16px;
+  }
+  mat-card-content{
+      padding: 16px;
+  }
+  .toolbar {
+    flex: 1 1 auto;
+  }
+  @media screen and (min-width: 992px) {
+  .mainbody{
+    margin-left:10% ;
+    margin-right: 10%;
+  }
+}
+.title{
+  padding-top: 30px;
+  font-size: x-large;
+}
