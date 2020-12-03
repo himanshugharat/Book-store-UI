@@ -1,26 +1,5 @@
-
-  <mat-toolbar class="header">
-    <span>
-    <button mat-icon-button >
-      <mat-icon>menu_book</mat-icon>
-    </button>
-    <span>bookstore</span>
-  </span>
-    <span class="toolbar"></span>
-        <button mat-icon-button >
-            <mat-icon>perm_identity</mat-icon>
-          </button><button mat-icon-button >
-            <mat-icon>shopping_cart</mat-icon>
-          </button>
-        
-  </mat-toolbar>
-   <div fxLayoutAlign="center center"> 
-<app-get-book></app-get-book>
+<app-header></app-header>
+<div fxLayoutAlign="center center">
+  <app-get-book></app-get-book>
 </div>
-  <footer>
-    <mat-toolbar class="footer" fxLayout="row" fxLayoutAlign="center">
-      <div>
-        Copyright © 2020, Bookstore Private Limited. All Rights Reserved
-      </div>
-    </mat-toolbar>
-  </footer>
+<app-footer></app-footer>

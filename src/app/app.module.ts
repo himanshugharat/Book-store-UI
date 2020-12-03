@@ -24,7 +24,10 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {NgxPaginationModule} from 'ngx-pagination'
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BookDetailsComponent } from './component/book-details/book-details.component';
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import {NgxPaginationModule} from 'ngx-pagination'
     LoginComponent,
     ForgotPasswordComponent,
     DashboardComponent,
-    GetBookComponent
+    GetBookComponent,
+    BookDetailsComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
