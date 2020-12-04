@@ -1,1 +1,32 @@
-<p>book-details works!</p>
+<app-header></app-header>
+<div fxLayoutAlign="center center">
+    <div fxFlex="10%"></div>
+    
+<div fxLayoutAlign="center center" fxFlex="30%">
+<mat-card>
+    <h4 routerLink="/dashboard">home/{{id}}</h4>
+    <img mat-card-image src={{book[0][0].image}}>
+</mat-card>
+</div>
+<div fxFlex="50%">
+    <mat-card >
+        <mat-card-title>{{book[0][0].title}}</mat-card-title>
+        <mat-card-subtitle>by {{book[0][0].author}}</mat-card-subtitle>
+        <p>
+            <button mat-raised-button color="primary" disabled matBadgePosition="before" matBadgeColor="accent">
+              4.5 &#9733;
+            </button>({{book[0][0].quantity}})
+          </p>
+          <span><b>Rs {{book[0][0].price}} <del>{{book[0][0].price+100}}</del></b>
+          </span>
+          <hr>
+          <mat-card-subtitle>&#8226;book detail</mat-card-subtitle>
+          <mat-card-content>{{book[0][0].description}}
+            <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
+          </mat-card-content>
+          
+    </mat-card>
+</div>
+<div fxFlex="10%"></div>
+</div>
+<app-footer></app-footer>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BookDetailsComponent } from './component/book-details/book-details.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { LoginBoardComponent } from './component/login-board/login-board.component';
@@ -11,8 +12,10 @@ const routes: Routes = [{
     { path: "signIn", component: SignInComponent },
     { path: "login", component: LoginComponent }]
 },
-{path:"forgotPassword",component:ForgotPasswordComponent},
-{path:"dashboard",component:DashboardComponent}];
+{ path: "forgotPassword", component: ForgotPasswordComponent },
+{ path: "dashboard", component: DashboardComponent },
+{ path: "detail/:id", component: BookDetailsComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

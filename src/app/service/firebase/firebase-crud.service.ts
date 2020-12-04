@@ -48,4 +48,8 @@ export class FirebaseCrudService {
     return this.db.collection<Item>('user', ref => ref.where('email', '==', value.email)
       .where('password', '==', value.password)).valueChanges({ idField: 'docId' })
   }
+  getBookById(value) {
+    return this.db.collection<Item>('book', ref => ref.where('id', '==', value)).valueChanges({ idField: 'docId' })
+  }
+  
 }

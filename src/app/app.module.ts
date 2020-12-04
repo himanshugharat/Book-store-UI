@@ -27,7 +27,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import { HeaderComponent } from './component/header/header.component';
-import { FooterComponent } from './component/footer/footer.component'
+import { FooterComponent } from './component/footer/footer.component';
+import { RatingComponent } from './component/rating/rating.component';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { FooterComponent } from './component/footer/footer.component'
     GetBookComponent,
     BookDetailsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { FooterComponent } from './component/footer/footer.component'
     MatBadgeModule,
     MatSelectModule,
     MatPaginatorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
