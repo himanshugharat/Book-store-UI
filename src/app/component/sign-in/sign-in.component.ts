@@ -19,25 +19,25 @@ export class SignInComponent implements OnInit {
   constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.firebaseService.getUser("user")
+   // this.firebaseService.getUser("user")
 
   }
   onSubmit(value) {
-    let userData = {
-      email: value.email,
-      name: value.name,
-      number: value.phone,
-      password: value.password
-    }
-    this.firebaseService.createUser(userData)
-      .then(
-        res => {
-          this.snackbar.open('register successfully', 'sucess')
-        }
-      ).catch(err =>
-        this.snackbar.open('unable to register', 'failed')
-      )
-  }
+  //   let userData = {
+  //     email: value.email,
+  //     name: value.name,
+  //     number: value.phone,
+  //     password: value.password
+  //   }
+  //   this.firebaseService.createUser(userData)
+  //     .then(
+  //       res => {
+  //         this.snackbar.open('register successfully', 'sucess')
+  //       }
+  //     ).catch(err =>
+  //       this.snackbar.open('unable to register', 'failed')
+  //     )
+   }
   validEmail() {
     return this.signup.get('email').hasError('required') ?
       "field is required" :

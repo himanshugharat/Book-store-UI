@@ -16,40 +16,20 @@ export class FirebaseCrudService {
   constructor(public db: AngularFirestore) {
   }
 
-  createUser(value) {
-    return this.db.collection('user').add({
+  getAllMethod(docName) {
+    this.itemsCollection = this.db.collection<Item>(docName);
+    this.items = this.itemsCollection.valueChanges();
+    return this.items
+  }
+
+  getMethodBy(docName, dataBy, value) {
+    return this.db.collection<Item>(docName, ref => ref.where(dataBy, '==', value)).valueChanges({ idField: 'docId' })
+  }
+
+  createMethod(docName, value) {
+    return this.db.collection(docName).add({
       value
     });
   }
 
-
-  // createUsera() {
-  //   this.menu.forEach((obj)=>{
-  //    this.db.collection('book').add({
-  //     id: obj.id,
-  //     author: obj.author,
-  //     title: obj.title,
-  //     image: obj.image,
-  //     quantity: obj.quantity,
-  //     price: obj.price,
-  //     description: obj.description
-  //    })
-  //   });
-  // }
-
-  getUser(name) {
-    this.itemsCollection = this.db.collection<Item>(name);
-    this.items = this.itemsCollection.valueChanges();
-    this.items.forEach(data => console.log(data))
-    return this.items
-  }
-
-  loginUser(value) {
-    return this.db.collection<Item>('user', ref => ref.where('email', '==', value.email)
-      .where('password', '==', value.password)).valueChanges({ idField: 'docId' })
-  }
-  getBookById(value) {
-    return this.db.collection<Item>('book', ref => ref.where('id', '==', value)).valueChanges({ idField: 'docId' })
-  }
-  
 }

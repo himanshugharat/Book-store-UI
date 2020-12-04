@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div fxLayoutAlign="center center">
+<div fxLayoutAlign="center start">
     <div fxFlex="10%"></div>
     
 <div fxLayoutAlign="center center" fxFlex="30%">
@@ -9,23 +9,41 @@
 </mat-card>
 </div>
 <div fxFlex="50%">
-    <mat-card >
-        <mat-card-title>{{book[0][0].title}}</mat-card-title>
-        <mat-card-subtitle>by {{book[0][0].author}}</mat-card-subtitle>
+    <mat-card class="detail" *ngFor="let book of book[0]">
+        <mat-card-title>{{book.title}}</mat-card-title>
+        <mat-card-subtitle>by {{book.author}}</mat-card-subtitle>
         <p>
             <button mat-raised-button color="primary" disabled matBadgePosition="before" matBadgeColor="accent">
               4.5 &#9733;
-            </button>({{book[0][0].quantity}})
+            </button>({{book.quantity}})
           </p>
-          <span><b>Rs {{book[0][0].price}} <del>{{book[0][0].price+100}}</del></b>
+          <span><b>Rs {{book.price}} <del>{{book.price+100}}</del></b>
           </span>
           <hr>
           <mat-card-subtitle>&#8226;book detail</mat-card-subtitle>
-          <mat-card-content>{{book[0][0].description}}
-            <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
+          <mat-card-content>{{book.description}}
           </mat-card-content>
-          
+          <hr>
+          <h4>rate this book</h4>
+          <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
+          <div [formGroup]="reviewForm" >
+          <mat-form-field appearance="outline">
+            <mat-label>Add Review</mat-label>
+            <input matInput type="email" formControlName="review" autocomplete="off" required>
+        </mat-form-field>
+        <button mat-raised-button color="warn" (click)="submitReview();reviewForm.reset()" >submit</button>
+      </div>
+          <div *ngIf="review.length>0">
+            <hr>
+            <mat-card-title>Reviews for this book</mat-card-title>
+            <mat-card-content *ngFor="let review of review[0]">
+             <mat-card-title> {{review.value.name}}</mat-card-title>
+             <ngb-rating [max]="5" [(rate)]="review.value.rating" [readonly]="true"></ngb-rating>
+            <mat-card-content>{{review.value.review}}</mat-card-content>
+            </mat-card-content>
+          </div>
     </mat-card>
+   
 </div>
 <div fxFlex="10%"></div>
 </div>

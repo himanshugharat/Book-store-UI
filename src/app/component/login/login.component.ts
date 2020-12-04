@@ -31,25 +31,25 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(re.user))
     })
   }
-  logout() {
-    this.firebaseAuth.signOut()
-    localStorage.removeItem('user')
-  }
-  onSubmit(value) {
-    this.firebaseService.loginUser(value).subscribe(res => {
-      console.log(res)
-      if (res.length == 1) {
-        this.snackbar.open('login successfully', 'sucess')
-        localStorage.setItem('token', res[0].docId)
-        localStorage.setItem('email', res[0].email)
-        localStorage.setItem('name', res[0].name)
-      }
-      else {
-        this.snackbar.open('unable to login check your input', 'failed')
-      }
-    }
-    )
-  }
+  // logout() {
+  //   this.firebaseAuth.signOut()
+  //   localStorage.removeItem('user')
+  // }
+   onSubmit(value) {
+  //   this.firebaseService.loginUser(value).subscribe(res => {
+  //     console.log(res)
+  //     if (res.length == 1) {
+  //       this.snackbar.open('login successfully', 'sucess')
+  //       localStorage.setItem('token', res[0].docId)
+  //       localStorage.setItem('email', res[0].email)
+  //       localStorage.setItem('name', res[0].name)
+  //     }
+  //     else {
+  //       this.snackbar.open('unable to login check your input', 'failed')
+  //     }
+  //   }
+  //   )
+   }
   validEmail() {
     return this.login.get('email').hasError('required') ?
       "field is required" :

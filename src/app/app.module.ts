@@ -30,6 +30,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { RatingComponent } from './component/rating/rating.component';
 import { StarRatingModule } from 'angular-star-rating';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { StarRatingModule } from 'angular-star-rating';
     MatSelectModule,
     MatPaginatorModule,
     NgxPaginationModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

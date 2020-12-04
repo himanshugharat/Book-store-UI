@@ -4,7 +4,7 @@
     <span class="toolbar"></span>
     <mat-form-field appearance="outline">
       <mat-label>sort by</mat-label>
-      <mat-select>
+      <mat-select [(value)]="sortType" (selectionChange)=selectChange($event.value)>
         <mat-option *ngFor="let bookby of data" [value]="bookby.value">
           {{bookby.viewValue}}
         </mat-option>
@@ -26,7 +26,7 @@
           </mat-card-subtitle>
           <p>
             <button mat-raised-button color="primary" disabled matBadgePosition="before" matBadgeColor="accent">
-              4.5 &#9733;
+              {{review()}} &#9733;
             </button>({{book.quantity}})
           </p>
           <span><b>Rs {{book.price}} <del>{{book.price+100}}</del></b>
