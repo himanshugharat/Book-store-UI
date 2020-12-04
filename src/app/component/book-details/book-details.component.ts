@@ -20,9 +20,8 @@ export class BookDetailsComponent implements OnInit {
   })
   id: number
   currentRate
-  constructor(public bookservice: FirebaseCrudService, public route: ActivatedRoute) {
+  constructor(public bookservice: FirebaseCrudService, public route: ActivatedRoute) { }
 
-  }
   ngOnInit(): void {
     this.getData()
     this.getReview()

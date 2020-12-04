@@ -14,7 +14,6 @@ interface bookBy {
 
 
 export class GetBookComponent implements OnInit {
-
   constructor(public bookservice: FirebaseCrudService) { }
   book = []
   sortType
