@@ -1,11 +1,17 @@
 <app-header></app-header>
 <div fxLayoutAlign="center start">
   <div fxFlex="10%"></div>
-
   <div fxLayoutAlign="center center" fxFlex="30%">
     <mat-card>
       <h4 routerLink="/dashboard">home/{{id}}</h4>
       <img mat-card-image src={{book[0][0].image}}>
+      <hr>
+      <mat-card-actions>
+        <button mat-raised-button color="warn"(click)="addToBag()">ADD TO BAG</button>
+        <button mat-raised-button color="warn" (click)="addTowishlist()">
+          <mat-icon>favorite_border</mat-icon> wishlist
+        </button>
+      </mat-card-actions>
     </mat-card>
   </div>
   <div fxFlex="50%">
@@ -43,7 +49,6 @@
         </mat-card-content>
       </div>
     </mat-card>
-
   </div>
   <div fxFlex="10%"></div>
 </div>

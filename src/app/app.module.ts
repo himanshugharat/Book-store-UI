@@ -28,9 +28,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { RatingComponent } from './component/rating/rating.component';
+
 import { StarRatingModule } from 'angular-star-rating';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { BagComponent } from './component/bag/bag.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BookDetailsComponent,
     HeaderComponent,
     FooterComponent,
-    RatingComponent
+    WishlistComponent,
+    BagComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatPaginatorModule,
     NgxPaginationModule,
     StarRatingModule.forRoot(),
-    NgbModule
+    NgbModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

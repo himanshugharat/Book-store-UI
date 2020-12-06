@@ -25,6 +25,7 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getData()
     this.getReview()
+   // this.addToBag()
   }
 
   getData() {
@@ -32,7 +33,9 @@ export class BookDetailsComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('id')
     this.bookservice.getMethodBy('book', 'id', this.id).subscribe(re => {
       this.book.push(re)
+      console.log(this.book)
     })
+    
   }
 
   submitReview() {
@@ -50,7 +53,23 @@ export class BookDetailsComponent implements OnInit {
     this.review = []
     this.bookservice.getMethodBy('review', "value.id", this.id).subscribe(re => {
       this.review.push(re)
+      console.log(this.review)
     })
-
+  }
+  addToBag(){
+    let bagVal={
+      bookId:this.id,
+      userName:localStorage.getItem('name'),
+      userId:localStorage.getItem('token'),
+    }
+    this.bookservice.createMethod('bag',bagVal)
+  }
+  addTowishlist(){
+    let wishVal={
+      bookId:this.id,
+      userName:localStorage.getItem('name'),
+      userId:localStorage.getItem('token'),
+    }
+    this.bookservice.createMethod('wishlist',wishVal)
   }
 }

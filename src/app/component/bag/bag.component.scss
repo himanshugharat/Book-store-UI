@@ -1,0 +1,23 @@
+img{
+    width:70px ;
+}
+mat-card{
+    padding: 30px;
+}
+.data{
+    margin-left: 10px;
+    display: inline-flex;
+}
+.headers-align{
+ padding: 40px;   
+}
+.getInput{
+    width:99% ;
+}
+.form-field  {
+    width:49% ;
+    padding: 3px;
+}
+.mat-card:not([class*=mat-elevation-z]){
+    box-shadow: none;;
+}
