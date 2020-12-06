@@ -18,7 +18,6 @@
               <mat-card-title>{{book.title}}</mat-card-title>
               <mat-card-subtitle>by {{book.author}}</mat-card-subtitle>
               <mat-card-content> <b>Rs {{book.price}} <del>{{book.price+100}}</del></b></mat-card-content>
-
               <button mat-icon-button (click)="removeItem()">
                 <mat-icon>remove_circle_outline</mat-icon>
               </button>
@@ -35,18 +34,13 @@
             <button mat-button color="primary" (click)="nextStep()">Next</button>
           </mat-action-row>
         </mat-expansion-panel>
-
         <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Customer Details
             </mat-panel-title>
-
           </mat-expansion-panel-header>
-          <!-- <mat-card-action > -->
-
           <div fxFlex="60%" [formGroup]="CustomerForm">
-            <!-- <form> -->
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>Full Name</mat-label>
               <input matInput formControlName="name" required>
@@ -67,25 +61,19 @@
               <mat-label>state</mat-label>
               <input matInput formControlName="state" required>
             </mat-form-field>
-            <!-- </form> -->
           </div>
-          <!-- </mat-card-action> -->
-
           <mat-action-row>
             <button mat-button color="warn" (click)="prevStep()">Previous</button>
             <button mat-button color="primary" [disabled]="!CustomerForm.valid"
               (click)="nextStep();custDetail(CustomerForm.value);CustomerForm.reset()">Next</button>
           </mat-action-row>
         </mat-expansion-panel>
-
         <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Order summary
             </mat-panel-title>
-
           </mat-expansion-panel-header>
-
           <div fxLayout="row wrap" fxLayoutGap="2%">
             <span>
               <img mat-panel-image src="{{book.image}}">
@@ -97,15 +85,11 @@
             </span>
           </div>
           <mat-action-row>
-            <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button> -->
             <button mat-raised-button color="primary" (click)="nextStep();addDataToOrder()">Checkout</button>
           </mat-action-row>
         </mat-expansion-panel>
-
       </mat-accordion>
-
     </mat-card>
   </div>
-  <div></div>
 </div>
 <app-footer></app-footer>

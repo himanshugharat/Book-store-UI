@@ -12,17 +12,18 @@ export class BagComponent implements OnInit {
   bag = []
   bagBook = []
   step = 0;
-  noOfItem=1
+  noOfItem = 1
   custData
-  CustomerForm=new FormGroup({
-    name:new FormControl(),
-    phone:new FormControl(),
-    address:new FormControl(),
-    city:new FormControl(),
-    state:new FormControl()
+
+  CustomerForm = new FormGroup({
+    name: new FormControl(),
+    phone: new FormControl(),
+    address: new FormControl(),
+    city: new FormControl(),
+    state: new FormControl()
   })
 
-  constructor(public bookService: FirebaseCrudService,public snakbar:MatSnackBar) { }
+  constructor(public bookService: FirebaseCrudService, public snakbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.bookService.getMethodBy('bag', 'value.userId', localStorage.getItem('token')).subscribe(re => {
@@ -31,8 +32,8 @@ export class BagComponent implements OnInit {
       this.getBagDetail()
       console.log(localStorage.getItem('name'))
     })
-
   }
+
   getBagDetail() {
     this.bag.forEach(element => {
       element.forEach(element => {
@@ -43,6 +44,7 @@ export class BagComponent implements OnInit {
       })
     })
   }
+
   setStep(index: number) {
     this.step = index;
   }
@@ -55,36 +57,39 @@ export class BagComponent implements OnInit {
     this.step--;
   }
 
-  addItem(){
+  addItem() {
     this.noOfItem++
   }
-  removeItem(){
-    if(this.noOfItem>1)
-    this.noOfItem--
+
+  removeItem() {
+    if (this.noOfItem > 1)
+      this.noOfItem--
   }
-  custDetail(val){
-     this.custData={
-      name:val.name,
-        phone:val.phone,
-        address:val.address,
-        city:val.city,
-        state:val.state
+
+  custDetail(val) {
+    this.custData = {
+      name: val.name,
+      phone: val.phone,
+      address: val.address,
+      city: val.city,
+      state: val.state
     }
   }
-  addDataToOrder(){
-    let value={
-      totalPrice:this.bagBook[0].price*this.noOfItem,
-      bookDetail:this.bagBook[0],
-      custDetail:this.custData,
-      userDetail:{
-        name:localStorage.getItem('name'),
-        email:localStorage.getItem('email'),
-        userId:localStorage.getItem('token')
+
+  addDataToOrder() {
+    let value = {
+      totalPrice: this.bagBook[0].price * this.noOfItem,
+      bookDetail: this.bagBook[0],
+      custDetail: this.custData,
+      userDetail: {
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email'),
+        userId: localStorage.getItem('token')
       },
-      time:Date()
+      time: Date()
     }
-    this.bookService.createMethod('order',value).catch(err=>{
-      this.snakbar.open('unable to place order plz try again',"failed")
+    this.bookService.createMethod('order', value).catch(err => {
+      this.snakbar.open('unable to place order plz try again', "failed")
     })
   }
 }

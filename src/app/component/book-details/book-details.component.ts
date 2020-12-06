@@ -25,7 +25,7 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getData()
     this.getReview()
-   // this.addToBag()
+    // this.addToBag()
   }
 
   getData() {
@@ -35,7 +35,7 @@ export class BookDetailsComponent implements OnInit {
       this.book.push(re)
       console.log(this.book)
     })
-    
+
   }
 
   submitReview() {
@@ -56,20 +56,20 @@ export class BookDetailsComponent implements OnInit {
       console.log(this.review)
     })
   }
-  addToBag(){
-    let bagVal={
-      bookId:this.id,
-      userName:localStorage.getItem('name'),
-      userId:localStorage.getItem('token'),
+  addToBag() {
+    let bagVal = {
+      bookId: this.id,
+      userName: localStorage.getItem('name'),
+      userId: localStorage.getItem('token'),
     }
-    this.bookservice.createMethod('bag',bagVal)
+    this.bookservice.createMethod('bag', bagVal)
   }
-  addTowishlist(){
-    let wishVal={
-      bookId:this.id,
-      userName:localStorage.getItem('name'),
-      userId:localStorage.getItem('token'),
+  addTowishlist() {
+    let wishVal = {
+      bookId: this.id,
+      userName: localStorage.getItem('name'),
+      userId: localStorage.getItem('token'),
     }
-    this.bookservice.createMethod('wishlist',wishVal)
+    this.bookservice.createMethod('wishlist', wishVal)
   }
 }
