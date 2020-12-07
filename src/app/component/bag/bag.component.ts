@@ -91,5 +91,6 @@ export class BagComponent implements OnInit {
     this.bookService.createMethod('order', value).catch(err => {
       this.snakbar.open('unable to place order plz try again', "failed")
     })
+    // this.bookService.deleteMethod('bag',this.bag[0].docId)
   }
 }

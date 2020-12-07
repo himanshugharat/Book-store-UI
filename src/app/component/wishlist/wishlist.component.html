@@ -1,5 +1,30 @@
 <app-header></app-header>
 <div>
-    <div></div>
+    <div fxFlex="10%"></div>
+    <div fxFlex="80%">
+        <h4>home/wishlist</h4>
+        <mat-card >
+           <mat-card-title>My Wishlist (02)</mat-card-title>
+           <hr>
+           <div>
+           <mat-card-content *ngFor="let book of wishlistBook[wishlistBook.length]" >
+            <div fxLayout="row wrap" fxLayoutGap="2%">
+                <span>
+                  <img mat-panel-image src="{{book[0].image}}">
+                </span>
+                <span>
+                  <mat-card-title>{{book[0].title}}</mat-card-title>
+                  <mat-card-subtitle>by {{book[0].author}}</mat-card-subtitle>
+                  <mat-card-content> <b>Rs {{book[0].price}} <del>{{book[0].price+100}}</del></b></mat-card-content>
+                  <button mat-button (click)="removeBook(book[0].id)">
+                    remove 
+                  </button>
+                </span>
+              </div>
+           </mat-card-content>
+          </div>
+        </mat-card>
+    </div>
+    <div fxFlex="10%"></div>
 </div>
 <app-footer></app-footer>

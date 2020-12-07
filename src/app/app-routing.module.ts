@@ -6,6 +6,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { LoginBoardComponent } from './component/login-board/login-board.component';
 import { LoginComponent } from './component/login/login.component';
+import { OrderComponent } from './component/order/order.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 
@@ -19,6 +20,7 @@ const routes: Routes = [{
 { path: "detail/:id", component: BookDetailsComponent },
 { path: "list", component: WishlistComponent},
 { path: "bag", component:BagComponent},
+{ path: "order", component:OrderComponent},
 ];
 
 @NgModule({

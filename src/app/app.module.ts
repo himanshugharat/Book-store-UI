@@ -34,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { BagComponent } from './component/bag/bag.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { OrderComponent } from './component/order/order.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FooterComponent,
     WishlistComponent,
     BagComponent,
+    OrderComponent,
     
   ],
   imports: [

@@ -31,5 +31,8 @@ export class FirebaseCrudService {
       value
     });
   }
+  deleteMethod(docName,Id){
+    return this.db.collection(docName).doc(Id).delete();
+  }
 
 }
