@@ -54,7 +54,7 @@ export class GetBookComponent implements OnInit {
     { value: 'price-2', viewValue: 'sort by price' }
   ];
   review() {
-    return (Math.random() * (5 - 1) + 1).toFixed(2)
+    return Math.floor(Math.random() * (5 - 1) + 1)
 
   }
 }
