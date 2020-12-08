@@ -1,9 +1,7 @@
-<app-header></app-header>
 <div fxLayoutAlign="center start">
   <div fxFlex="10%"></div>
   <div fxLayoutAlign="center center" fxFlex="30%">
     <mat-card>
-      <h4 routerLink="/dashboard">home/{{id}}</h4>
       <img mat-card-image src={{book[0][0].image}}>
       <hr>
       <mat-card-actions>
@@ -19,9 +17,7 @@
       <mat-card-title>{{book.title}}</mat-card-title>
       <mat-card-subtitle>by {{book.author}}</mat-card-subtitle>
       <p>
-        <button mat-raised-button color="primary" disabled matBadgePosition="before" matBadgeColor="accent">
-          4.5 &#9733;
-        </button>({{book.quantity}})
+        ({{book.quantity}})
       </p>
       <span><b>Rs {{book.price}} <del>{{book.price+100}}</del></b>
       </span>
@@ -52,4 +48,3 @@
   </div>
   <div fxFlex="10%"></div>
 </div>
-<app-footer></app-footer>

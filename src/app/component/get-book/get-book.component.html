@@ -13,7 +13,7 @@
   </div>
   <div fxLayout="row wrap" fxLayoutAlign="center">
     <div *ngFor="let book of book | paginate: { itemsPerPage: 12, currentPage: page }" class="main" fxLayoutGap="20px">
-      <mat-card class="grid-item" routerLink="/detail/{{book.id}}">
+      <mat-card class="grid-item" routerLink="detail/{{book.id}}">
         <mat-card-content class="cover">
           <img mat-card-image src={{book.image}}>
         </mat-card-content>

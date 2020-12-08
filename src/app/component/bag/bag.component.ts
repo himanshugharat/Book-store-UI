@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { totalmem } from 'os';
+import { element } from 'protractor';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
 @Component({
@@ -11,9 +13,14 @@ import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.serv
 export class BagComponent implements OnInit {
   bag = []
   bagBook = []
-  step = 0;
+  step = true;
+  step1 = false;
+  step2 = false;
   noOfItem = 1
   custData
+  totalAmount
+  nonoteCondition=false
+  item=this.total()
 
   CustomerForm = new FormGroup({
     name: new FormControl(),
@@ -26,35 +33,38 @@ export class BagComponent implements OnInit {
   constructor(public bookService: FirebaseCrudService, public snakbar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.bookService.getMethodBy('bag', 'value.userId', localStorage.getItem('token')).subscribe(re => {
-      this.bag.push(re)
-      console.log(this.bag)
-      this.getBagDetail()
-      console.log(localStorage.getItem('name'))
-    })
+    this.getBag()
   }
-
-  getBagDetail() {
-    this.bag.forEach(element => {
+getBag(){
+  this.bag=[]
+  this.bagBook=[]
+  this.bookService.getMethodBy('bag','value.userName',"tom").subscribe(re=>{
+    this.bag=[]
+    this.bag.push(re)
+    console.log(this.bag)
+    this.bag.forEach(element=>{
       element.forEach(element => {
-        this.bookService.getMethodBy('book', 'id', element.value.bookId).subscribe(re => {
-          this.bagBook.push(re[0])
-          console.log(this.bagBook)
-        })
-      })
+        console.log(element.value.bookId)
+         this.bookService.getMethodBy('book','id',element.value.bookId).subscribe(re=>{
+       //   this.wishlistBook=[]
+           this.bagBook.push(re)
+           console.log(this.bagBook)
+          })
+      });
     })
-  }
+  })
+}
 
   setStep(index: number) {
-    this.step = index;
+    this.step = true;
   }
 
-  nextStep() {
-    this.step++;
+  setStep1(index: number) {
+    this.step1 = true;
   }
 
-  prevStep() {
-    this.step--;
+  setStep2(index: number) {
+    this.step2 = true;
   }
 
   addItem() {
@@ -79,7 +89,7 @@ export class BagComponent implements OnInit {
   addDataToOrder() {
     let value = {
       totalPrice: this.bagBook[0].price * this.noOfItem,
-      bookDetail: this.bagBook[0],
+      bookDetail: this.bagBook[0][0],
       custDetail: this.custData,
       userDetail: {
         name: localStorage.getItem('name'),
@@ -88,9 +98,35 @@ export class BagComponent implements OnInit {
       },
       time: Date()
     }
-    this.bookService.createMethod('order', value).catch(err => {
+    this.bookService.createMethod('order', value).then(a=>{
+    this.bag.forEach(element=>{
+      element.forEach(element => {
+        console.log(element.docId)
+     this.bookService.deleteMethod('bag',element.docId).then(a=>console.log("ok"))
+    })
+  });
+      this.bag=[]
+     this.nonoteCondition=true
+    }).catch(err => {
       this.snakbar.open('unable to place order plz try again', "failed")
     })
-    // this.bookService.deleteMethod('bag',this.bag[0].docId)
+     
   }
+  total(){
+    this.totalAmount=0
+    this.bagBook.forEach(element=>{
+      console.log(this.totalAmount)
+      this.totalAmount+=element.price
+    })
+    return this.totalAmount
+  }
+  removeBook(id,index){
+    console.log(id[index].docId)
+    this.bookService.deleteMethod('bag',id[index].docId).then(re=>{
+      this.ngOnInit()
+    })
+  }
+  noItem(){
+       return (this.bag.length ==2 ) ? this.nonoteCondition = true : this.nonoteCondition = false;
+     }
 }

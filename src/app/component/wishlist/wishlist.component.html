@@ -1,25 +1,26 @@
 <app-header></app-header>
 <div>
     <div fxFlex="10%"></div>
-    <div fxFlex="80%">
+    <div fxFlex="80%" *ngIf="noItem()" >
         <h4>home/wishlist</h4>
         <mat-card >
            <mat-card-title>My Wishlist (02)</mat-card-title>
            <hr>
            <div>
-           <mat-card-content *ngFor="let book of wishlistBook[wishlistBook.length]" >
+            <mat-card-content *ngFor="let book of wishlistBook ;let i = index" > 
+           
             <div fxLayout="row wrap" fxLayoutGap="2%">
-                <span>
+                 <span>
                   <img mat-panel-image src="{{book[0].image}}">
                 </span>
                 <span>
                   <mat-card-title>{{book[0].title}}</mat-card-title>
                   <mat-card-subtitle>by {{book[0].author}}</mat-card-subtitle>
-                  <mat-card-content> <b>Rs {{book[0].price}} <del>{{book[0].price+100}}</del></b></mat-card-content>
-                  <button mat-button (click)="removeBook(book[0].id)">
-                    remove 
+                  <mat-card-content> <b>Rs {{book[0].price}} <del>{{book.price+100}}</del></b></mat-card-content>
+                  <button mat-button (click)="removeBook(wishlist[0],i)">
+                    remove {{i}}
                   </button>
-                </span>
+                </span> 
               </div>
            </mat-card-content>
           </div>
@@ -27,4 +28,7 @@
     </div>
     <div fxFlex="10%"></div>
 </div>
+<div *ngIf="!noItem()" fxLayout="row" fxLayoutAlign="center center" class="disabled"><div>
+  no item in wishlist
+</div></div>
 <app-footer></app-footer>

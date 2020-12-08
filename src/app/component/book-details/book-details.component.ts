@@ -1,10 +1,7 @@
-import { getLocaleDateFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { StarRatingComponent } from 'ng-starrating';
-import { element } from 'protractor';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
 @Component({
@@ -20,12 +17,11 @@ export class BookDetailsComponent implements OnInit {
   })
   id: number
   currentRate
-  constructor(public bookservice: FirebaseCrudService, public route: ActivatedRoute) { }
+  constructor(public bookservice: FirebaseCrudService, public route: ActivatedRoute, public snakbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getData()
     this.getReview()
-    // this.addToBag()
   }
 
   getData() {
@@ -33,9 +29,7 @@ export class BookDetailsComponent implements OnInit {
     this.id = +this.route.snapshot.paramMap.get('id')
     this.bookservice.getMethodBy('book', 'id', this.id).subscribe(re => {
       this.book.push(re)
-      console.log(this.book)
     })
-
   }
 
   submitReview() {
@@ -45,7 +39,11 @@ export class BookDetailsComponent implements OnInit {
       rating: this.currentRate,
       review: this.reviewForm.get('review').value
     }
-    this.bookservice.createMethod('review', reviewData)
+    this.bookservice.createMethod('review', reviewData).then(re => {
+      this.snakbar.open("added Review", 'success', { duration: 2000 })
+    }).catch(re => {
+      this.snakbar.open("unable to added Review", 'failure', { duration: 2000 })
+    })
     this.getReview()
   }
 
@@ -53,23 +51,32 @@ export class BookDetailsComponent implements OnInit {
     this.review = []
     this.bookservice.getMethodBy('review', "value.id", this.id).subscribe(re => {
       this.review.push(re)
-      console.log(this.review)
     })
   }
+
   addToBag() {
     let bagVal = {
       bookId: this.id,
       userName: localStorage.getItem('name'),
       userId: localStorage.getItem('token'),
     }
-    this.bookservice.createMethod('bag', bagVal)
+    this.bookservice.createMethod('bag', bagVal).then(re => {
+      this.snakbar.open("added item to cart", 'success', { duration: 2000 })
+    }).catch(re => {
+      this.snakbar.open("unable to added item to cart", 'failure', { duration: 2000 })
+    })
   }
+
   addTowishlist() {
     let wishVal = {
       bookId: this.id,
       userName: localStorage.getItem('name'),
       userId: localStorage.getItem('token'),
     }
-    this.bookservice.createMethod('wishlist', wishVal)
+    this.bookservice.createMethod('wishlist', wishVal).then(re => {
+      this.snakbar.open("added item to wishlist", 'success', { duration: 2000 })
+    }).catch(re => {
+      this.snakbar.open("unable to added item to wishlist", 'failure', { duration: 2000 })
+    })
   }
 }

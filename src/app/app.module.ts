@@ -20,21 +20,21 @@ import { environment } from '../environments/environment';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { GetBookComponent } from './component/get-book/get-book.component';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatSelectModule} from '@angular/material/select';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-
 import { StarRatingModule } from 'angular-star-rating';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { BagComponent } from './component/bag/bag.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { OrderComponent } from './component/order/order.component';
+import { BreadcrumbModule } from 'angular-crumbs';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { OrderComponent } from './component/order/order.component';
     WishlistComponent,
     BagComponent,
     OrderComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -73,7 +73,8 @@ import { OrderComponent } from './component/order/order.component';
     NgxPaginationModule,
     StarRatingModule.forRoot(),
     NgbModule,
-    MatExpansionModule
+    MatExpansionModule,
+    BreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

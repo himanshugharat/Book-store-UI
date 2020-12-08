@@ -1,40 +1,42 @@
-<app-header></app-header>
 <div>
   <div fxFlex="10%"></div>
-  <div fxFlex="60%">
+  <div fxFlex="60%" *ngIf="!nonoteCondition">
     <mat-card>
-      <mat-accordion class="headers-align" *ngFor="let book of bagBook">
-        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-accordion class="headers-align" multi>
+        <mat-expansion-panel [expanded]="step" (opened)="setStep(0)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               My Cart
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div fxLayout="row wrap" fxLayoutGap="2%">
-            <span>
-              <img mat-panel-image src="{{book.image}}">
-            </span>
-            <span>
-              <mat-card-title>{{book.title}}</mat-card-title>
-              <mat-card-subtitle>by {{book.author}}</mat-card-subtitle>
-              <mat-card-content> <b>Rs {{book.price}} <del>{{book.price+100}}</del></b></mat-card-content>
-              <button mat-icon-button (click)="removeItem()">
-                <mat-icon>remove_circle_outline</mat-icon>
-              </button>
-              {{noOfItem}}
-              <button mat-icon-button (click)="addItem()">
-                <mat-icon>add_circle_outline</mat-icon>
-              </button>
-              <button mat-button>
-                remove
-              </button>
-            </span>
+          <div *ngFor="let book of bagBook; let i=index">
+            <div fxLayout="row wrap" fxLayoutGap="2%">
+              <span>
+                <img mat-panel-image src="{{book[0].image}}">
+              </span>
+              <span>
+                <mat-card-title>{{book[0].title}}</mat-card-title>
+                <mat-card-subtitle>by {{book[0].author}}</mat-card-subtitle>
+                <mat-card-content> <b>Rs {{book[0].price}} <del>{{book[0].price+100}}</del></b></mat-card-content>
+                <button mat-icon-button (click)="removeItem()">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+                {{noOfItem}}
+                <button mat-icon-button (click)="addItem()">
+                  <mat-icon>add_circle_outline</mat-icon>
+                </button>
+                <button mat-button (click)="removeBook(bag[0],i)">
+                  remove{{i}}
+                
+                </button>
+              </span>
+            </div>
           </div>
           <mat-action-row>
-            <button mat-button color="primary" (click)="nextStep()">Next</button>
+            <button mat-button color="primary" (click)="setStep1(1)">Next</button>
           </mat-action-row>
         </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel [expanded]="step1" (opened)="setStep1(1)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Customer Details
@@ -63,33 +65,38 @@
             </mat-form-field>
           </div>
           <mat-action-row>
-            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+
             <button mat-button color="primary" [disabled]="!CustomerForm.valid"
-              (click)="nextStep();custDetail(CustomerForm.value);CustomerForm.reset()">Next</button>
+              (click)="setStep2(2);custDetail(CustomerForm.value);CustomerForm.reset()">Next</button>
           </mat-action-row>
         </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel [expanded]="step2" (opened)="setStep2(2)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
               Order summary
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div fxLayout="row wrap" fxLayoutGap="2%">
-            <span>
-              <img mat-panel-image src="{{book.image}}">
-            </span>
-            <span>
-              <mat-card-title>{{book.title}}</mat-card-title>
-              <mat-card-subtitle>by {{book.author}}</mat-card-subtitle>
-              <mat-card-content> <b> total amount :- Rs {{book.price*noOfItem}} </b></mat-card-content>
-            </span>
+          <div *ngFor="let book of bagBook">
+            <div fxLayout="row wrap" fxLayoutGap="2%">
+              <span>
+                <img mat-panel-image src="{{book[0].image}}">
+              </span>
+              <span>
+                <mat-card-title>{{book[0].title}}</mat-card-title>
+                <mat-card-subtitle>by {{book[0].author}}</mat-card-subtitle>
+                
+              </span>
+            </div>
           </div>
+          <mat-card-content> <b> total amount :- Rs {{total()}} </b></mat-card-content>
           <mat-action-row>
-            <button mat-raised-button color="primary" (click)="nextStep();addDataToOrder()">Checkout</button>
+            <button mat-raised-button color="primary" (click)="addDataToOrder()">Checkout</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card>
   </div>
 </div>
-<app-footer></app-footer>
+<div *ngIf="nonoteCondition" fxLayout="row" fxLayoutAlign="center center" class="disabled"><div>
+  no order in bag
+</div></div>

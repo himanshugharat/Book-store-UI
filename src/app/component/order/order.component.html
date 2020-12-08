@@ -1,21 +1,27 @@
-<app-header></app-header>
+
 <div>
-    <div fxFlex="10%"></div>
-    <div fxFlex="70%">
-        <mat-card>
+    <!-- <div fxFlex="10%"></div> -->
+    <!-- <div fxFlex="80%" class="demo" > -->
+        <mat-card >
+           <mat-card-title>Your Order</mat-card-title>
+           <hr>
+           <div>
+            <mat-card-content *ngFor="let book of book ;let i = index" > 
+           
             <div fxLayout="row wrap" fxLayoutGap="2%">
-            <span>
-              <img mat-panel-image src="{{book.bookDetail.image}}">
-            </span>
-            <span>
-              <mat-card-title>{{book.bookDetail.title}}</mat-card-title>
-              <mat-card-subtitle>by {{book.bookDetail.author}}</mat-card-subtitle>
-              <mat-card-content> <b>Rs {{book.bookDetail.price}} <del>{{book.bookDetail.price+100}}</del></b></mat-card-content>
-              order on {{book.time}}
-            </span>
+                 <span>
+                  <img mat-panel-image src="{{book.bookDetail.image}}">
+                </span>
+                <span>
+                  <mat-card-title>{{book.bookDetail.title}}</mat-card-title>
+                  <mat-card-subtitle>by {{book.bookDetail.author}}</mat-card-subtitle>
+                  <mat-card-content> <b>Rs {{book.bookDetail.price}} <del>{{book.bookDetail.price+100}}</del></b></mat-card-content>
+                </span> 
+              </div>
+           </mat-card-content>
           </div>
         </mat-card>
-    </div>
-    <div fxFlex="20%"></div>
+    <!-- </div> -->
+    <!-- <div fxFlex="10%"></div> -->
 </div>
-<app-footer></app-footer>
+

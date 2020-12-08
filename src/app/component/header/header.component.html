@@ -3,12 +3,15 @@
         <button mat-icon-button>
             <mat-icon>menu_book</mat-icon>
         </button>
-        <span>Bookstore</span>
+        <span class="title">Bookstore</span>
     </span>
     <span class="toolbar"></span>
     <button mat-icon-button>
+        <mat-icon routerLink="list">favorite_border</mat-icon>
+    </button>
+    <button mat-icon-button>
         <mat-icon>perm_identity</mat-icon>
     </button><button mat-icon-button>
-        <mat-icon>shopping_cart</mat-icon>
+        <mat-icon routerLink="bag">shopping_cart</mat-icon>
     </button>
 </mat-toolbar>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { element } from 'protractor';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
 @Component({
@@ -12,38 +13,38 @@ export class WishlistComponent implements OnInit {
   constructor(public bookService:FirebaseCrudService) { }
 
   ngOnInit(): void {
-   
-   this.getwishlist()
-   //this.getBagDetail()
-  }
-  getwishlist(){
+    this.getWishlist()
+}
+getWishlist(){
+  this.wishlist=[]
+  this.wishlistBook=[]
+  this.bookService.getMethodBy('wishlist','value.userName',"tom").subscribe(re=>{
     this.wishlist=[]
-    this.bookService.getMethodBy('wishlist','value.userName','tom').subscribe(re=>{
-      this.wishlist.push(re) 
+    this.wishlist.push(re)
     console.log(this.wishlist)
-    this.getBagDetail()
-  
-  })
-  //this.getBagDetail()
-  }
-  getBagDetail() {
-    this.wishlistBook=[]
-    this.wishlist.forEach(element => {
+    this.wishlist.forEach(element=>{
       element.forEach(element => {
-        this.bookService.getMethodBy('book', 'id', element.value.bookId).subscribe(re => {
-          this.wishlistBook.push(re)       
-        })
-      })
-      console.log(this.wishlistBook)
+        console.log(element.value.bookId)
+         this.bookService.getMethodBy('book','id',element.value.bookId).subscribe(re=>{
+       //   this.wishlistBook=[]
+           this.wishlistBook.push(re)
+           console.log(this.wishlistBook)
+          })
+      });
     })
-    
-  }
-  
-  removeBook(id){
-    this.bookService.getMethodBy('wishlist','value.bookId',id).subscribe(re=>{
-      let docId=re[0].docId
-      this.bookService.deleteMethod('wishlist',docId)
-      //this.getBagDetail()
-    })
-  }
+  })
+}
+removeBook(id,index){
+  console.log(id[index].docId)
+  this.bookService.deleteMethod('wishlist',id[index].docId).then(re=>{
+   // this.wishlist.splice(0,index-1)
+    this.ngOnInit()
+  })
+}
+noItem(){
+  if(this.wishlist.length>0) 
+   return false 
+   else
+   return true
+}
 }
