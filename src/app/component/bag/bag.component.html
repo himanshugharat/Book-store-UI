@@ -67,7 +67,7 @@
           <mat-action-row>
 
             <button mat-button color="primary" [disabled]="!CustomerForm.valid"
-              (click)="setStep2(2);custDetail(CustomerForm.value);CustomerForm.reset()">Next</button>
+              (click)="setStep2(2);custDetail(CustomerForm.value)">Next</button>
           </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="step2" (opened)="setStep2(2)" hideToggle>
