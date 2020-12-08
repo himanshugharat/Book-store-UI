@@ -12,15 +12,16 @@ import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.serv
 })
 export class BagComponent implements OnInit {
   bag = []
+  price = []
   bagBook = []
   step = true;
   step1 = false;
   step2 = false;
-  noOfItem = 1
+  noOfItem = 0
   custData
   totalAmount
-  nonoteCondition=false
-  item=this.total()
+  nonoteCondition = false
+  item = this.total()
 
   CustomerForm = new FormGroup({
     name: new FormControl(),
@@ -35,25 +36,25 @@ export class BagComponent implements OnInit {
   ngOnInit(): void {
     this.getBag()
   }
-getBag(){
-  this.bag=[]
-  this.bagBook=[]
-  this.bookService.getMethodBy('bag','value.userName',"tom").subscribe(re=>{
-    this.bag=[]
-    this.bag.push(re)
-    console.log(this.bag)
-    this.bag.forEach(element=>{
-      element.forEach(element => {
-        console.log(element.value.bookId)
-         this.bookService.getMethodBy('book','id',element.value.bookId).subscribe(re=>{
-       //   this.wishlistBook=[]
-           this.bagBook.push(re)
-           console.log(this.bagBook)
+  getBag() {
+    this.bag = []
+    this.bagBook = []
+    this.bookService.getMethodBy('bag', 'value.userName', "tom").subscribe(re => {
+      this.bag = []
+      this.bag.push(re)
+      console.log(this.bag)
+      this.bag.forEach(element => {
+        element.forEach(element => {
+          console.log(element.value.bookId)
+          this.bookService.getMethodBy('book', 'id', element.value.bookId).subscribe(re => {
+            //   this.wishlistBook=[]
+            this.bagBook.push(re)
+            console.log(this.bagBook)
           })
-      });
+        });
+      })
     })
-  })
-}
+  }
 
   setStep(index: number) {
     this.step = true;
@@ -67,13 +68,16 @@ getBag(){
     this.step2 = true;
   }
 
-  addItem() {
-    this.noOfItem++
+  addItem(index) {
+    this.price[index] = ++this.noOfItem
+    console.log(this.price)
+
   }
 
-  removeItem() {
-    if (this.noOfItem > 1)
-      this.noOfItem--
+  removeItem(index) {
+    if (this.noOfItem > 0)
+      this.price[index] = --this.noOfItem
+    console.log(this.price)
   }
 
   custDetail(val) {
@@ -98,35 +102,39 @@ getBag(){
       },
       time: Date()
     }
-    this.bookService.createMethod('order', value).then(a=>{
-    this.bag.forEach(element=>{
-      element.forEach(element => {
-        console.log(element.docId)
-     this.bookService.deleteMethod('bag',element.docId).then(a=>console.log("ok"))
-    })
-  });
-      this.bag=[]
-     this.nonoteCondition=true
+    this.bookService.createMethod('order', value).then(a => {
+      this.bag.forEach(element => {
+        element.forEach(element => {
+          console.log(element.docId)
+          this.bookService.deleteMethod('bag', element.docId).then(a => console.log("ok"))
+        })
+      });
+      this.bag = []
+      this.nonoteCondition = true
     }).catch(err => {
       this.snakbar.open('unable to place order plz try again', "failed")
     })
-     
+
   }
-  total(){
-    this.totalAmount=0
-    this.bagBook.forEach(element=>{
+  total() {
+    this.totalAmount = 0
+    let i = 0
+    this.bagBook.forEach(element => {
+      console.log(element[0].price)
+      console.log("ok")
+      this.totalAmount += element[0].price * this.price[i++]
       console.log(this.totalAmount)
-      this.totalAmount+=element.price
     })
+
     return this.totalAmount
   }
-  removeBook(id,index){
+  removeBook(id, index) {
     console.log(id[index].docId)
-    this.bookService.deleteMethod('bag',id[index].docId).then(re=>{
+    this.bookService.deleteMethod('bag', id[index].docId).then(re => {
       this.ngOnInit()
     })
   }
-  noItem(){
-       return (this.bag.length ==2 ) ? this.nonoteCondition = true : this.nonoteCondition = false;
-     }
+  noItem() {
+    return (this.bag.length == 2) ? this.nonoteCondition = true : this.nonoteCondition = false;
+  }
 }

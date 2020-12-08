@@ -35,6 +35,8 @@ import { BagComponent } from './component/bag/bag.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { OrderComponent } from './component/order/order.component';
 import { BreadcrumbModule } from 'angular-crumbs';
+import { OrderSuccessComponent } from './component/order-success/order-success.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { BreadcrumbModule } from 'angular-crumbs';
     WishlistComponent,
     BagComponent,
     OrderComponent,
+    OrderSuccessComponent,
 
   ],
   imports: [
@@ -74,7 +77,8 @@ import { BreadcrumbModule } from 'angular-crumbs';
     StarRatingModule.forRoot(),
     NgbModule,
     MatExpansionModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,8 @@ mat-card{
     display: inline-flex;
 }
 .headers-align{
- padding: 40px;   
+ padding: 60px;   
+
 }
 .getInput{
     width:99% ;
@@ -29,3 +30,8 @@ mat-card{
     pointer-events: none;
     opacity: 0.4;
   }
+  .mat-expansion-panel{
+      //border: 1px solid rgba(0, 0, 0, 0.37);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  

@@ -10,6 +10,7 @@ import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.serv
 export class WishlistComponent implements OnInit {
   wishlist=[]
   wishlistBook=[]
+  nonoteCondition=false
   constructor(public bookService:FirebaseCrudService) { }
 
   ngOnInit(): void {
@@ -42,9 +43,6 @@ removeBook(id,index){
   })
 }
 noItem(){
-  if(this.wishlist.length>0) 
-   return false 
-   else
-   return true
+  return (this.wishlist.length ==0 ) ? this.nonoteCondition = true : this.nonoteCondition = false;
 }
 }

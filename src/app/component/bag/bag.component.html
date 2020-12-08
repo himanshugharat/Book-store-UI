@@ -18,11 +18,11 @@
                 <mat-card-title>{{book[0].title}}</mat-card-title>
                 <mat-card-subtitle>by {{book[0].author}}</mat-card-subtitle>
                 <mat-card-content> <b>Rs {{book[0].price}} <del>{{book[0].price+100}}</del></b></mat-card-content>
-                <button mat-icon-button (click)="removeItem()">
+                <button mat-icon-button (click)="removeItem(i)">
                   <mat-icon>remove_circle_outline</mat-icon>
                 </button>
-                {{noOfItem}}
-                <button mat-icon-button (click)="addItem()">
+                {{price[i]}}
+                <button mat-icon-button (click)="addItem(i)">
                   <mat-icon>add_circle_outline</mat-icon>
                 </button>
                 <button mat-button (click)="removeBook(bag[0],i)">
