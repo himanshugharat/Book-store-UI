@@ -23,8 +23,9 @@ export class FirebaseCrudService {
   }
 
   getMethodBy(docName, dataBy, value) {
-    return this.db.collection<Item>(docName, ref => ref.where(dataBy, '==', value)).valueChanges({ idField: 'docId' })
+    return this.db.collection(docName, ref => ref.where(dataBy, '==', value)).valueChanges({ idField: 'docId' })
   }
+  
 
   createMethod(docName, value) {
     return this.db.collection(docName).add({

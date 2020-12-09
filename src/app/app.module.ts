@@ -37,6 +37,8 @@ import { OrderComponent } from './component/order/order.component';
 import { BreadcrumbModule } from 'angular-crumbs';
 import { OrderSuccessComponent } from './component/order-success/order-success.component';
 import {MatTableModule} from '@angular/material/table';
+import { ProfileComponent } from './component/profile/profile.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import {MatTableModule} from '@angular/material/table';
     BagComponent,
     OrderComponent,
     OrderSuccessComponent,
+    ProfileComponent,
 
   ],
   imports: [
@@ -78,7 +81,8 @@ import {MatTableModule} from '@angular/material/table';
     NgbModule,
     MatExpansionModule,
     BreadcrumbModule,
-    MatTableModule
+    MatTableModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { LoginBoardComponent } from './component/login-board/login-board.compone
 import { LoginComponent } from './component/login/login.component';
 import { OrderSuccessComponent } from './component/order-success/order-success.component';
 import { OrderComponent } from './component/order/order.component';
+import { ProfileComponent } from './component/profile/profile.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
 
@@ -27,6 +28,7 @@ const routes: Routes = [{
     { path: "bag", component: BagComponent, data: { breadcrumb: 'Cart' } },
     { path: "order", component: OrderComponent, data: { breadcrumb: 'Order' } },
     { path: "orderDone", component: OrderSuccessComponent, data: { breadcrumb: 'Ordersuccess' } },
+    { path: "profile", component: ProfileComponent, data: { breadcrumb: 'Profile' } },
   ]
 },
 

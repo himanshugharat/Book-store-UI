@@ -1,9 +1,21 @@
 .msg{
-    font-size: xx-large;
+    //font-size: xx-large;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 .main{
     padding: 10px;
 }
+td,th{
+  // width:60% ;
+    border: 1px solid black;
+    padding: 10px;
+}
 table{
+    table-layout: auto;
+    border-collapse: collapse;
     width:100% ;
+}
+.dat{
+width: 90%;
 }

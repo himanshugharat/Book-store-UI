@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { totalmem } from 'os';
-import { element } from 'protractor';
+import { Router } from '@angular/router';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
 @Component({
@@ -12,12 +11,12 @@ import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.serv
 })
 export class BagComponent implements OnInit {
   bag = []
-  price = []
+  price = new Array(5).fill(1)
   bagBook = []
   step = true;
   step1 = false;
   step2 = false;
-  noOfItem = 0
+  noOfItem = 1
   custData
   totalAmount
   nonoteCondition = false
@@ -31,7 +30,7 @@ export class BagComponent implements OnInit {
     state: new FormControl()
   })
 
-  constructor(public bookService: FirebaseCrudService, public snakbar: MatSnackBar) { }
+  constructor(public bookService: FirebaseCrudService, public snakbar: MatSnackBar, public route: Router) { }
 
   ngOnInit(): void {
     this.getBag()
@@ -111,6 +110,9 @@ export class BagComponent implements OnInit {
       });
       this.bag = []
       this.nonoteCondition = true
+
+    }).then(re => {
+      this.route.navigate(['dashboard/orderDone'])
     }).catch(err => {
       this.snakbar.open('unable to place order plz try again', "failed")
     })

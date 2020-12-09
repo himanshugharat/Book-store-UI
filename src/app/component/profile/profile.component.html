@@ -1,0 +1,76 @@
+<div>
+    <div fxFlex="10%"></div>
+    <div fxFlex="50%">
+        <!-- <form> -->
+        <div>Personal Details <button mat-button (click)="enableEdit=!enableEdit">edit</button></div>
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>FullName</mat-label>
+            <input matInput type="text" [disabled]="enableEdit" value="{{userData[0].name}}" autocomplete="off"
+                required>
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>EmailId</mat-label>
+            <input matInput type="text" [disabled]="enableEdit" value="{{userData[0].email}}" autocomplete="off"
+                required>
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [disabled]="enableEdit" value="{{userData[0].password}}" autocomplete="off"
+                required>
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="number" [disabled]="enableEdit" value="{{userData[0].number}}" autocomplete="off"
+                required>
+        </mat-form-field>
+        <button mat-raised-button color="warn" *ngIf="!enableEdit">save</button>
+        <!-- </form> -->
+        <hr>
+
+        <div fxLayoutAlign="end center"><button mat-button (click)="enableAdd=!enableAdd">add Address</button></div>
+        <div *ngFor="let data of userAdd[0].value.data.add">
+        <div>Address Details <button mat-button (click)="enableAddEdit=!enableAddEdit" >edit</button></div>
+            <mat-form-field appearance="outline" class="getInput">
+                <mat-label>Address</mat-label>
+                <input matInput [disabled]="enableAddEdit" value="{{data.address}}" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>City/Town</mat-label>
+                <input matInput [disabled]="enableAddEdit" value="{{data.city}}" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>state</mat-label>
+                <input matInput [disabled]="enableAddEdit" value="{{data.state}}" required>
+            </mat-form-field>
+            <button mat-raised-button color="warn" *ngIf="!enableAddEdit">save</button>
+            <hr>
+        </div>
+        <!-- <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+            <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                {{season}}
+            </mat-radio-button>
+        </mat-radio-group> -->
+        <div *ngIf="enableAdd==true">
+            <div>Add Address</div>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                    {{season}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field appearance="outline" class="getInput">
+                <mat-label>Address</mat-label>
+                <input matInput required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>City/Town</mat-label>
+                <input matInput required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>state</mat-label>
+                <input matInput required>
+            </mat-form-field>
+            <button mat-raised-button color="warn" *ngIf="!enableAddEdit">save</button>
+        </div>
+    </div>
+    <div fxFlex="20%"></div>
+</div>

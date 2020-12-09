@@ -3,30 +3,21 @@
     <div fxFlex="80%">
         <div fxLayoutAlign="center center" >
             <span>
-            <div class="msg">Order placed successfully</div>
+            <div class="msg"><img mat-card-image  class="dat" src="../../../assets/image/order.png"></div>
             <mat-card>
-            <div>hurray!!! your order is confirmed the order id is #123456 save the order id for further communication..</div>
+            <div class="msg">hurray!!! your order is confirmed the order id is #123456 save the order id for further communication..</div>
         </mat-card>
        
         <div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" appearance="outline">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- Position Column -->
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef> email. </th>
               <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
-          
-            <!-- Name Column -->
             <ng-container matColumnDef="contactUs">
               <th mat-header-cell *matHeaderCellDef> contactUs </th>
               <td mat-cell *matCellDef="let element"> {{element.contactUs}} </td>
             </ng-container>
-          
-            <!-- Weight Column -->
             <ng-container matColumnDef="address">
               <th mat-header-cell *matHeaderCellDef> address </th>
               <td mat-cell *matCellDef="let element"> {{element.address}} </td>
