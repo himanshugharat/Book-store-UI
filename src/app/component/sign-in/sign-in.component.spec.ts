@@ -20,33 +20,33 @@ import { SignInComponent } from './sign-in.component';
 describe('SignInComponent', () => {
   let component: SignInComponent;
   let fixture: ComponentFixture<SignInComponent>;
-  let de:DebugElement;
-  let el:HTMLElement;
+  let de: DebugElement;
+  let el: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignInComponent ],
-      imports:[AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
-      AngularFirestoreModule,MatSnackBarModule,FlexLayoutModule,
-      MatCardModule,
-      MatButtonModule,
-      MatIconModule,
-      MatIconModule,
-      ReactiveFormsModule,
-      MatToolbarModule,
-      MatInputModule,
-      BrowserModule,
-      BrowserAnimationsModule],
-      providers:[FirebaseCrudService]
+      declarations: [SignInComponent],
+      imports: [AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
+        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatInputModule,
+        BrowserModule,
+        BrowserAnimationsModule],
+      providers: [FirebaseCrudService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SignInComponent);
     component = fixture.componentInstance;
-    de=fixture.debugElement.query(By.css('form'));
-    el=de.nativeElement;
+    de = fixture.debugElement.query(By.css('form'));
+    el = de.nativeElement;
     fixture.detectChanges();
   });
 
@@ -67,11 +67,11 @@ describe('SignInComponent', () => {
     component.signup.controls['phone'].setValue(9909190881);
     expect(component.signup.valid).toBeTruthy();
   })
-  it("call submit method",()=>{
-    spyOn(component,'onSubmit');
-    el=fixture.debugElement.query(By.css('button')).nativeElement;
+  it("call submit method", () => {
+    spyOn(component, 'onSubmit');
+    el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
     expect(component.onSubmit).toHaveBeenCalledTimes(1)
   })
-  
+
 });

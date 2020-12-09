@@ -21,25 +21,25 @@ import { BagComponent } from './bag.component';
 describe('BagComponent', () => {
   let component: BagComponent;
   let fixture: ComponentFixture<BagComponent>;
-  let de:DebugElement;
-  let el:HTMLElement;
+  let de: DebugElement;
+  let el: HTMLElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BagComponent ],
-      imports:[AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
-      AngularFirestoreModule,MatSnackBarModule,FlexLayoutModule,
-      MatCardModule,
-      MatButtonModule,
-      MatIconModule,
-      MatIconModule,
-      ReactiveFormsModule,
-      MatToolbarModule,
-      MatInputModule,
-      BrowserModule,
-      BrowserAnimationsModule,MatExpansionModule],
-      providers:[FirebaseCrudService]
+      declarations: [BagComponent],
+      imports: [AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
+        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatInputModule,
+        BrowserModule,
+        BrowserAnimationsModule, MatExpansionModule],
+      providers: [FirebaseCrudService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -67,5 +67,5 @@ describe('BagComponent', () => {
     component.CustomerForm.controls['state'].setValue('mhah');
     expect(component.CustomerForm.valid).toBeFalsy();
   })
-  
+
 });
