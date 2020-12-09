@@ -3,8 +3,8 @@
   <div fxFlex="60%" *ngIf="!nonoteCondition">
     <mat-card>
       <mat-accordion class="headers-align" multi>
-        <mat-expansion-panel [expanded]="step" (opened)="setStep(0)" hideToggle >
-          <mat-expansion-panel-header >
+        <mat-expansion-panel [expanded]="step" (opened)="setStep(0)" hideToggle>
+          <mat-expansion-panel-header>
             <mat-panel-title>
               My Cart
             </mat-panel-title>
@@ -27,7 +27,7 @@
                 </button>
                 <button mat-button (click)="removeBook(bag[0],i)">
                   remove{{i}}
-                
+
                 </button>
               </span>
             </div>
@@ -84,7 +84,7 @@
               <span>
                 <mat-card-title>{{book[0].title}}</mat-card-title>
                 <mat-card-subtitle>by {{book[0].author}}</mat-card-subtitle>
-                
+
               </span>
             </div>
           </div>
@@ -97,6 +97,8 @@
     </mat-card>
   </div>
 </div>
-<div *ngIf="nonoteCondition" fxLayout="row" fxLayoutAlign="center center" class="disabled"><div>
-  no order in bag
-</div></div>
+<div *ngIf="nonoteCondition" fxLayout="row" fxLayoutAlign="center center" class="disabled">
+  <div>
+    no order in bag
+  </div>
+</div>

@@ -46,7 +46,6 @@ export class BagComponent implements OnInit {
         element.forEach(element => {
           console.log(element.value.bookId)
           this.bookService.getMethodBy('book', 'id', element.value.bookId).subscribe(re => {
-            //   this.wishlistBook=[]
             this.bagBook.push(re)
             console.log(this.bagBook)
           })

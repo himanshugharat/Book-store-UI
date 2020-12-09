@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   seasons: string[] = ['Work', 'Home', 'Other'];
   uid
   userAdd = []
-  place=0
+  place = 0
   constructor(public bookService: FirebaseCrudService) { }
 
   ngOnInit(): void {
@@ -29,8 +29,7 @@ export class ProfileComponent implements OnInit {
     //   data: {
     //     val: this.uid, add: [
     //       { address: "addreamam  Work", city: "mumbai", state: "maha" },
-    //       { address: "addreamam Home", city: "mumbai", state: "maha" },
-    //       { address: "addreamam Other", city: "mumbai", state: "maha" }
+          
     //     ]
     //   }
     // }
@@ -40,8 +39,8 @@ export class ProfileComponent implements OnInit {
       console.log(this.userAdd[0].value.data)
     })
   }
-    
-  
+
+
 
 
 }
