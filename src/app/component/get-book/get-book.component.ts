@@ -39,15 +39,13 @@ export class GetBookComponent implements OnInit {
         break;
       }
     }
-    console.log(val)
   }
   getData() {
     this.bookservice.getAllMethod('book').subscribe(re => {
       re.forEach(book => this.book.push(book))
     })
-    console.log(this.book)
-
   }
+  
   data: bookBy[] = [
     { value: 'title-0', viewValue: 'sort by title' },
     { value: 'author-1', viewValue: 'sort by author' },

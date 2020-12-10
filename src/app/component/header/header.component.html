@@ -13,18 +13,17 @@
         <button mat-icon-button #tooltip="matTooltip" matTooltip="profile" [matMenuTriggerFor]="menu">
             <mat-icon>perm_identity</mat-icon>
         </button>
-            <mat-menu #menu="matMenu">
-                <div class="detail">
-                    <div fxLayout="row wrap" fxLayoutAlign="center">
-                        <mat-icon class="material-icons-outlined">account_circle</mat-icon>
-                    </div>
-                    <div fxLayout="row wrap" class="button">
-                        <button mat-stroked-button routerLink="profile">profile</button>
-                        <button mat-stroked-button routerLink="order">My Order</button>
-                    </div>
-            
+        <mat-menu #menu="matMenu">
+            <div class="detail">
+                <div fxLayout="row wrap" fxLayoutAlign="center">
+                    <mat-icon class="material-icons-outlined">account_circle</mat-icon>
                 </div>
-            </mat-menu>
+                <div fxLayout="row wrap" class="button">
+                    <button mat-stroked-button routerLink="profile">profile</button>
+                    <button mat-stroked-button routerLink="order">My Order</button>
+                </div>
+            </div>
+        </mat-menu>
         <button mat-icon-button #tooltip="matTooltip" matTooltip="cart">
             <mat-icon routerLink="bag">shopping_cart</mat-icon>
         </button>

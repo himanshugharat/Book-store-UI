@@ -2,13 +2,15 @@
 <div class="mainPage">
     <mat-card class="loginImg">
         <mat-card-content><img src="../../../assets/image/2766594.png"></mat-card-content>
-    <mat-card-header class="title">Online Book Shopping</mat-card-header>
+        <mat-card-header class="title">Online Book Shopping</mat-card-header>
     </mat-card>
     <mat-card class="loginCard">
-        <mat-card-title >
-            <span class="toogleButton"><button  mat-button routerLink="/board/login">Login</button>
+        <mat-card-title>
+            <span class="toogleButton"><button mat-button routerLink="/board/login">Login</button>
                 <button mat-button routerLink="/board/signIn">signUp</button></span>
         </mat-card-title>
-        <mat-card-content><router-outlet></router-outlet></mat-card-content>
+        <mat-card-content>
+            <router-outlet></router-outlet>
+        </mat-card-content>
     </mat-card>
 </div>

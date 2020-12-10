@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
@@ -11,7 +11,7 @@ export class WishlistComponent implements OnInit {
   wishlist = []
   wishlistBook = []
   nonoteCondition = false
-  constructor(public bookService: FirebaseCrudService,public snakbar:MatSnackBar) { }
+  constructor(public bookService: FirebaseCrudService, public snakbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getWishlist()
@@ -34,10 +34,10 @@ export class WishlistComponent implements OnInit {
   removeBook(id, index) {
     this.bookService.deleteMethod('wishlist', id[index].docId).then(re => {
       this.ngOnInit()
-    }).then(re=>{
-      this.snakbar.open("book removed from wishlist ","success",{duration:2000})
-    }).catch(err=>{
-      this.snakbar.open("unable to  removed book from wishlist ","failure",{duration:2000})
+    }).then(re => {
+      this.snakbar.open("book removed from wishlist ", "success", { duration: 2000 })
+    }).catch(err => {
+      this.snakbar.open("unable to  removed book from wishlist ", "failure", { duration: 2000 })
     })
   }
   noItem() {

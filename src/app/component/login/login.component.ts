@@ -15,14 +15,11 @@ export class LoginComponent implements OnInit {
     email: new FormControl("", Validators.email),
     password: new FormControl("", Validators.minLength(8))
   })
-  data=[]
-  constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar, public firebaseAuth: AngularFireAuth,public route:Router) { }
+  data = []
+  constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar, public firebaseAuth: AngularFireAuth, public route: Router) { }
 
   ngOnInit(): void {
-    // this.signup("pejigi6338@dkt1.com","pass333")
-    //this.logout()
     this.logout()
-    //this.signin("pejigi6338@dkt1.com", "pass333")
   }
   async signin(email, pass) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, pass).then(re => {
@@ -38,19 +35,18 @@ export class LoginComponent implements OnInit {
     this.firebaseAuth.signOut()
     localStorage.removeItem('user')
   }
-   onSubmit(value) {
-     this.firebaseService.getMethodBy('user','email',value.email).subscribe(re=>{
-       this.data.push(re[0])
-       console.log(this.data)
-       if(re){
-        this.snackbar.open('login successfully', 'sucess')
+  onSubmit(value) {
+    this.firebaseService.getMethodBy('user', 'email', value.email).subscribe(re => {
+      this.data.push(re[0])
+      if (re) {
+        this.snackbar.open('login successfully', 'sucess', { duration: 2000 })
         localStorage.setItem('token', this.data[0].docId)
         localStorage.setItem('email', this.data[0].email)
         localStorage.setItem('name', this.data[0].name)
         this.route.navigate(['dashboard'])
-       }
-     })
-   }
+      }
+    })
+  }
   validEmail() {
     return this.login.get('email').hasError('required') ?
       "field is required" :

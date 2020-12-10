@@ -1,7 +1,6 @@
 <div>
     <div fxFlex="10%"></div>
     <div fxFlex="50%">
-        <!-- <form> -->
         <div>Personal Details <button mat-button (click)="enableEdit=!enableEdit">edit</button></div>
         <mat-form-field class="example-form-field" appearance="outline">
             <mat-label>FullName</mat-label>
@@ -20,27 +19,30 @@
                 required>
         </mat-form-field>
         <button mat-raised-button color="warn" *ngIf="!enableEdit">save</button>
-        <!-- </form> -->
         <hr>
-
         <div fxLayoutAlign="end center"><button mat-stroked-button (click)="enableAdd=!enableAdd">add Address</button>
         </div>
-        <div *ngFor="let data of userAdd[0]" >
-            <div>Address Details({{data.value.addressData.type}}) <button mat-button (click)="enableAddEdit=!enableAddEdit">edit</button></div>
-            <div >
-                <mat-form-field appearance="outline"  class="getInput">
+        <div *ngFor="let data of userAdd[0]">
+            <div>Address Details({{data.value.addressData.type}}) <button mat-button
+                    (click)="enableAddEdit=!enableAddEdit">edit</button></div>
+            <div>
+                <mat-form-field appearance="outline" class="getInput">
                     <mat-label>Address</mat-label>
-                    <input matInput value="{{data.value.addressData.address}}" [disabled]="enableAddEdit" (input)="changeAddress($event.target.value)">
+                    <input matInput value="{{data.value.addressData.address}}" [disabled]="enableAddEdit"
+                        (input)="changeAddress($event.target.value)">
                 </mat-form-field>
-                <mat-form-field appearance="outline"  class="form-field">
+                <mat-form-field appearance="outline" class="form-field">
                     <mat-label>City/Town</mat-label>
-                    <input matInput   value="{{data.value.addressData.city}}" [disabled]="enableAddEdit" (input)="changeCity($event.target.value)">
+                    <input matInput value="{{data.value.addressData.city}}" [disabled]="enableAddEdit"
+                        (input)="changeCity($event.target.value)">
                 </mat-form-field>
                 <mat-form-field appearance="outline" [disabled]="enableAddEdit" class="form-field">
                     <mat-label>state</mat-label>
-                    <input matInput   value="{{data.value.addressData.state}}" [disabled]="enableAddEdit" (input)="changeState($event.target.value)">
+                    <input matInput value="{{data.value.addressData.state}}" [disabled]="enableAddEdit"
+                        (input)="changeState($event.target.value)">
                 </mat-form-field>
-                <button mat-raised-button color="warn" *ngIf="!enableAddEdit" (click)="updateAddress(data.docId)">save</button>
+                <button mat-raised-button color="warn" *ngIf="!enableAddEdit"
+                    (click)="updateAddress(data.docId)">save</button>
                 <hr>
             </div>
         </div>
@@ -50,7 +52,6 @@
                 <mat-radio-button class="example-radio-button" value="Work">Work</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="home">home</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="other">other</mat-radio-button>
-
             </mat-radio-group>
             {{addressType}}
             <div [formGroup]="addressForm">
@@ -66,10 +67,9 @@
                     <mat-label>state</mat-label>
                     <input matInput formControlName="state" required>
                 </mat-form-field>
-                <button mat-raised-button color="warn" *ngIf="enableAddEdit"(click)="addAddress()">save</button>
+                <button mat-raised-button color="warn" *ngIf="enableAddEdit" (click)="addAddress()">save</button>
             </div>
         </div>
-
     </div>
     <div fxFlex="20%"></div>
 </div>
