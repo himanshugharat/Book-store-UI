@@ -37,13 +37,11 @@ export class BookDetailsComponent implements OnInit {
   }
 bagButton(){
   this.bookservice.getMethodBy('bag', "value.bookId", this.id).subscribe(re => {
-    console.log(re.length)
     re.length>0?this.bagButtonActive=true:this.bagButtonActive=false
   })
 }
 wishlistButton(){
   this.bookservice.getMethodBy('wishlist', "value.bookId", this.id).subscribe(re => {
-    console.log(re.length)
     re.length>0?this.wishlistButtonActive=true:this.wishlistButtonActive=false
   })
 }

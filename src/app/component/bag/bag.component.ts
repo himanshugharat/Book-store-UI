@@ -21,7 +21,6 @@ export class BagComponent implements OnInit {
   totalAmount
   nonoteCondition = false
   item = this.total()
-
   CustomerForm = new FormGroup({
     name: new FormControl(),
     phone: new FormControl(),
@@ -35,6 +34,7 @@ export class BagComponent implements OnInit {
   ngOnInit(): void {
     this.getBag()
   }
+
   getBag() {
     this.bag = []
     this.bagBook = []
@@ -68,14 +68,11 @@ export class BagComponent implements OnInit {
 
   addItem(index) {
     this.price[index] = ++this.noOfItem
-    console.log(this.price)
-
   }
 
   removeItem(index) {
     if (this.noOfItem > 0)
       this.price[index] = --this.noOfItem
-    console.log(this.price)
   }
 
   custDetail(val) {
@@ -103,36 +100,35 @@ export class BagComponent implements OnInit {
     this.bookService.createMethod('order', value).then(a => {
       this.bag.forEach(element => {
         element.forEach(element => {
-          console.log(element.docId)
           this.bookService.deleteMethod('bag', element.docId).then(a => console.log("ok"))
         })
       });
       this.bag = []
       this.nonoteCondition = true
-
     }).then(re => {
       this.route.navigate(['dashboard/orderDone'])
     }).catch(err => {
       this.snakbar.open('unable to place order plz try again', "failed")
     })
-
   }
+
   total() {
     this.totalAmount = 0
     let i = 0
     this.bagBook.forEach(element => {
-      console.log(element[0].price)
-      console.log("ok")
       this.totalAmount += element[0].price * this.price[i++]
-      console.log(this.totalAmount)
     })
-
     return this.totalAmount
   }
+
   removeBook(id, index) {
     console.log(id[index].docId)
     this.bookService.deleteMethod('bag', id[index].docId).then(re => {
       this.ngOnInit()
+    }).then(re => {
+      this.snakbar.open("book removed successfully", "success", { duration: 2000 })
+    }).catch(err=>{
+      this.snakbar.open("unable to  removed book", "failed", { duration: 2000 })
     })
   }
   noItem() {

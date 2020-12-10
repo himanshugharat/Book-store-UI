@@ -5,7 +5,8 @@
       <img mat-card-image src={{book[0][0].image}}>
       <hr>
       <mat-card-actions>
-        <button mat-raised-button color="warn" [disabled]="bagButtonActive" (click)="addToBag()">{{bagButtonActive?'IN CART':'ADD TO BAG'}}</button>
+        <button mat-raised-button color="warn" [disabled]="bagButtonActive"
+          (click)="addToBag()">{{bagButtonActive?'IN CART':'ADD TO BAG'}}</button>
         <button mat-raised-button color="warn" [disabled]="wishlistButtonActive" (click)="addTowishlist()">
           <mat-icon>favorite_border</mat-icon> {{wishlistButtonActive?'IN wishlist':'ADD TO wishlist'}}
         </button>
