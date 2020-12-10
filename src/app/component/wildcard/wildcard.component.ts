@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class WildcardComponent implements OnInit {
 
-  constructor(public route:Router) { }
+  constructor(public route: Router) { }
 
   ngOnInit(): void {
   }
-  redirect(){
+  redirect() {
     this.route.navigate(["board/login"])
   }
 }

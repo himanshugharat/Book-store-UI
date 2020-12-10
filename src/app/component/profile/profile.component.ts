@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 
 @Component({
@@ -14,8 +15,6 @@ export class ProfileComponent implements OnInit {
   enableEdit = true
   enableAddEdit = true
   enableAdd = false
-  favoriteSeason: string;
-  seasons: string[] = ['Work', 'Home', 'Other'];
   uid
   userAdd = []
   place = 0
@@ -27,7 +26,7 @@ export class ProfileComponent implements OnInit {
     city: new FormControl(),
     state: new FormControl()
   })
-  constructor(public bookService: FirebaseCrudService) { }
+  constructor(public bookService: FirebaseCrudService, public snakbar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -35,19 +34,10 @@ export class ProfileComponent implements OnInit {
     this.bookService.getMethodBy('user', 'name', localStorage.getItem('name')).subscribe(re => {
       this.userData = []
       this.userData.push(re[0])
-      console.log(this.userData)
     })
-    // let data = {
-    //   val:localStorage.getItem('token'),
-    //   Work: { address: "addreamam  Work", city: "toWn", state: "UP" }
-    // }
-    //  this.bookService.createMethod('address', data)
-
     this.bookService.getMethodBy('address', 'value.val', localStorage.getItem('token')).subscribe(re => {
       this.userAdd = []
       this.userAdd.push(re)
-      console.log(this.userAdd)
-
     })
   }
   addAddress() {
@@ -55,7 +45,11 @@ export class ProfileComponent implements OnInit {
       val: localStorage.getItem('token'),
       addressData: { address: this.addressForm.get('address').value, city: this.addressForm.get('city').value, state: this.addressForm.get('state').value, type: this.addressType }
     }
-    this.bookService.createMethod('address', data)
+    this.bookService.createMethod('address', data).then(re => {
+      this.snakbar.open("address added successfully ", "success", { duration: 2000 })
+    }).catch(err => {
+      this.snakbar.open("unable to add address  ", "failed", { duration: 2000 })
+    })
   }
   changeAddress(value) {
     this.address = value
@@ -74,8 +68,10 @@ export class ProfileComponent implements OnInit {
         addressData: { address: this.address, city: this.city, state: this.state, type: this.addressType }
       }
     }
-    this.bookService.updateMethod("address", data, id).catch(err=>{
-      console.log("abbaab")
+    this.bookService.updateMethod("address", data, id).catch(err => {
+      this.snakbar.open("address unable to updated", "failed", { duration: 2000 })
+    }).then(re => {
+      this.snakbar.open("address updated", "success", { duration: 2000 })
     })
   }
 

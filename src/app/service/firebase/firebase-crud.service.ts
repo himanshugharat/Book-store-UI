@@ -25,21 +25,19 @@ export class FirebaseCrudService {
   getMethodBy(docName, dataBy, value) {
     return this.db.collection(docName, ref => ref.where(dataBy, '==', value)).valueChanges({ idField: 'docId' })
   }
-  
+
 
   createMethod(docName, value) {
     return this.db.collection(docName).add({
       value
     });
   }
-  deleteMethod(docName,Id){
+  deleteMethod(docName, Id) {
     return this.db.collection(docName).doc(Id).delete();
   }
-  updateMethod(docName,data,id){
-      return this.db
-          .collection(docName)
-          .doc(id).set(data,{merge:true})
-   }
-  
+  updateMethod(docName, data, id) {
+    return this.db.collection(docName).doc(id).set(data, { merge: true })
+  }
+
 
 }
