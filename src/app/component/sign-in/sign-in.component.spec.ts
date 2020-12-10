@@ -53,21 +53,21 @@ describe('SignInComponent', () => {
   fit('should create', () => {
     expect(component).toBeTruthy();
   });
-  fit('form inValid', () => {
+  fit('when given incorrect data to form then return form inValid', () => {
     component.signup.controls['name'].setValue('');
     component.signup.controls['email'].setValue('');
     component.signup.controls['password'].setValue('');
     component.signup.controls['phone'].setValue('');
     expect(component.signup.valid).toBeFalsy();
   })
-  fit('form valid', () => {
+  fit('when given correct data to form then return form Valid', () => {
     component.signup.controls['name'].setValue('Tom');
     component.signup.controls['email'].setValue('nopoja2033@hebgsw.com');
     component.signup.controls['password'].setValue('gharat133');
     component.signup.controls['phone'].setValue(9909190881);
     expect(component.signup.valid).toBeTruthy();
   })
-  it("call submit method", () => {
+  it("when button clicked then return cliked", () => {
     spyOn(component, 'onSubmit');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();

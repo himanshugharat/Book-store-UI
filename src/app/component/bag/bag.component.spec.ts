@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 import { environment } from 'src/environments/environment';
 
@@ -27,7 +28,7 @@ describe('BagComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [BagComponent],
       imports: [AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
-        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,
+        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,Router,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
@@ -51,7 +52,7 @@ describe('BagComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('form inValid', () => {
+  it('when given incorrect data to form then return form inValid', () => {
     component.CustomerForm.controls['name'].setValue('');
     component.CustomerForm.controls['phone'].setValue('');
     component.CustomerForm.controls['address'].setValue('');
@@ -59,7 +60,7 @@ describe('BagComponent', () => {
     component.CustomerForm.controls['state'].setValue('');
     expect(component.CustomerForm.valid).toBeFalsy();
   })
-  it('form valid', () => {
+  it('when given correct data to form then return form valid', () => {
     component.CustomerForm.controls['name'].setValue('tom');
     component.CustomerForm.controls['phone'].setValue(9969399696);
     component.CustomerForm.controls['address'].setValue('');
