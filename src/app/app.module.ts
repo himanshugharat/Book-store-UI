@@ -11,7 +11,7 @@ import { SignInComponent } from './component/sign-in/sign-in.component';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './component/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AngularFireModule } from '@angular/fire';
@@ -39,6 +39,9 @@ import { OrderSuccessComponent } from './component/order-success/order-success.c
 import {MatTableModule} from '@angular/material/table';
 import { ProfileComponent } from './component/profile/profile.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { WildcardComponent } from './component/wildcard/wildcard.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,7 @@ import {MatRadioModule} from '@angular/material/radio';
     OrderComponent,
     OrderSuccessComponent,
     ProfileComponent,
+    WildcardComponent,
 
   ],
   imports: [
@@ -82,7 +86,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatExpansionModule,
     BreadcrumbModule,
     MatTableModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule,
+    FormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

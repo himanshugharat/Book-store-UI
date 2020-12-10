@@ -51,7 +51,7 @@ describe('BagComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  fit('form inValid', () => {
+  it('form inValid', () => {
     component.CustomerForm.controls['name'].setValue('');
     component.CustomerForm.controls['phone'].setValue('');
     component.CustomerForm.controls['address'].setValue('');
@@ -59,7 +59,7 @@ describe('BagComponent', () => {
     component.CustomerForm.controls['state'].setValue('');
     expect(component.CustomerForm.valid).toBeFalsy();
   })
-  fit('form valid', () => {
+  it('form valid', () => {
     component.CustomerForm.controls['name'].setValue('tom');
     component.CustomerForm.controls['phone'].setValue(9969399696);
     component.CustomerForm.controls['address'].setValue('');

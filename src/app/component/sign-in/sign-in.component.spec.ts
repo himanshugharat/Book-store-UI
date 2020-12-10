@@ -50,17 +50,17 @@ describe('SignInComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('form inValid', () => {
+  fit('form inValid', () => {
     component.signup.controls['name'].setValue('');
     component.signup.controls['email'].setValue('');
     component.signup.controls['password'].setValue('');
     component.signup.controls['phone'].setValue('');
     expect(component.signup.valid).toBeFalsy();
   })
-  it('form valid', () => {
+  fit('form valid', () => {
     component.signup.controls['name'].setValue('Tom');
     component.signup.controls['email'].setValue('nopoja2033@hebgsw.com');
     component.signup.controls['password'].setValue('gharat133');

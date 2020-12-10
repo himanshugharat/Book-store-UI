@@ -6,12 +6,30 @@
         <span class="title">Bookstore</span>
     </span>
     <span class="toolbar"></span>
-    <button mat-icon-button>
-        <mat-icon routerLink="list">favorite_border</mat-icon>
-    </button>
-    <button mat-icon-button>
-        <mat-icon>perm_identity</mat-icon>
-    </button><button mat-icon-button>
-        <mat-icon routerLink="bag">shopping_cart</mat-icon>
-    </button>
+    <span class="icon">
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="wishlist">
+            <mat-icon routerLink="list">favorite_border</mat-icon>
+        </button>
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="profile" [matMenuTriggerFor]="menu">
+            <mat-icon>perm_identity</mat-icon>
+        </button>
+            <mat-menu #menu="matMenu">
+                <div class="detail">
+                    <div fxLayout="row wrap" fxLayoutAlign="center">
+                        <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+                    </div>
+                    <div fxLayout="row wrap" class="button">
+                        <button mat-stroked-button routerLink="profile">profile</button>
+                        <button mat-stroked-button routerLink="order">My Order</button>
+                    </div>
+            
+                </div>
+            </mat-menu>
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="cart">
+            <mat-icon routerLink="bag">shopping_cart</mat-icon>
+        </button>
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="logout" (click)="logout()">
+            <mat-icon routerLink="board/login">power_settings_new</mat-icon>
+        </button>
+    </span>
 </mat-toolbar>

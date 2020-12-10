@@ -11,7 +11,9 @@ import { OrderSuccessComponent } from './component/order-success/order-success.c
 import { OrderComponent } from './component/order/order.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
+import { WildcardComponent } from './component/wildcard/wildcard.component';
 import { WishlistComponent } from './component/wishlist/wishlist.component';
+import { AuthGuardService } from './service/auth/auth-guard.service';
 
 const routes: Routes = [{
   path: "board", component: LoginBoardComponent, children: [
@@ -19,16 +21,17 @@ const routes: Routes = [{
     { path: "login", component: LoginComponent }]
 },
 { path: "forgotPassword", component: ForgotPasswordComponent },
+{ path: "card", component: WildcardComponent },
 {
   path: "dashboard", component: DashboardComponent, data: { breadcrumb: 'Home' },
   children: [
     { path: "", component: GetBookComponent, data: { breadcrumb: 'Detail' } },
     { path: "detail/:id", component: BookDetailsComponent, data: { breadcrumb: 'Detail' } },
-    { path: "list", component: WishlistComponent, data: { breadcrumb: 'List' } },
-    { path: "bag", component: BagComponent, data: { breadcrumb: 'Cart' } },
-    { path: "order", component: OrderComponent, data: { breadcrumb: 'Order' } },
+    { path: "list", component: WishlistComponent, data: { breadcrumb: 'List' }, canActivate: [AuthGuardService] },
+    { path: "bag", component: BagComponent, data: { breadcrumb: 'Cart' }, canActivate: [AuthGuardService] },
+    { path: "order", component: OrderComponent, data: { breadcrumb: 'Order' }, canActivate: [AuthGuardService] },
     { path: "orderDone", component: OrderSuccessComponent, data: { breadcrumb: 'Ordersuccess' } },
-    { path: "profile", component: ProfileComponent, data: { breadcrumb: 'Profile' } },
+    { path: "profile", component: ProfileComponent, data: { breadcrumb: 'Profile' }, canActivate: [AuthGuardService] },
   ]
 },
 
