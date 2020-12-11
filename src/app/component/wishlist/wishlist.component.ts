@@ -26,7 +26,6 @@ export class WishlistComponent implements OnInit {
         element.forEach(element => {
           this.bookService.getMethodBy('book', 'id', element.value.bookId).subscribe(re => {
             this.wishlistBook.push(re)
-            
           })
         });
       })

@@ -5,15 +5,13 @@
         </button>
         <span class="title">Bookstore</span>
         <mat-card class="input-card">
-            <!-- <mat-icon>search</mat-icon> -->
-        <span [formGroup]="header" class="input-feild">
-            <!-- <mat-form-field class="example-form-field" appearance="outline"> -->
-                <!-- <mat-label>Password</mat-label> -->
+            <span [formGroup]="header" class="input-feild">
                 <input matInput type="text" formControlName="dataa" autocomplete="off" placeholder="search">
-            <!-- </mat-form-field> -->
-            <button mat-button (click)="search(header.value)"><mat-icon>search</mat-icon></button>
-          </span>
-          </mat-card>
+                <button mat-button (click)="search(header.value)">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </span>
+        </mat-card>
     </span>
     <span class="toolbar"></span>
     <span class="icon">
@@ -42,12 +40,11 @@
                     email:{{email}}
                 </div>
                 <div fxLayout="row" fxLayoutAllign="end" class="button">
-
-                    <button mat-stroked-button  (click)="logout()">logout</button>
+                    <button mat-stroked-button (click)="logout()">logout</button>
                 </div>
             </div>
         </mat-menu>
-        <button mat-icon-button #tooltip="matTooltip" matTooltip="cart" class="bag" >
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="cart" class="bag">
             <mat-icon routerLink="bag">shopping_cart</mat-icon>
         </button>
         <button mat-icon-button #tooltip="matTooltip" matTooltip="logout" [matMenuTriggerFor]="menuLogout">

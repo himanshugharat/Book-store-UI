@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SharedService {
   public data = new BehaviorSubject('');
   constructor() { }
-  change(data:string){
+  change(data: string) {
     this.data.next(data)
   }
 }

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 import { AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router';
-import  firebase from 'firebase';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-login',

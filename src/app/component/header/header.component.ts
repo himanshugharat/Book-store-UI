@@ -9,24 +9,24 @@ import { SharedService } from 'src/app/service/shared/shared.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  header=new FormGroup({
-    dataa:new FormControl()
+  header = new FormGroup({
+    dataa: new FormControl()
   })
-name
-email
-  constructor(public route: Router,public shared:SharedService) { }
+  name
+  email
+  constructor(public route: Router, public shared: SharedService) { }
 
   ngOnInit(): void {
-   this.name=localStorage.getItem('name') 
-   this.email=localStorage.getItem('email') 
+    this.name = localStorage.getItem('name')
+    this.email = localStorage.getItem('email')
   }
-  search(val){
-    console.log(val.dataa) 
+  search(val) {
+    console.log(val.dataa)
     this.shared.change(val.dataa)
   }
   logout() {
     this.route.navigate(['board/login'])
     localStorage.clear()
   }
-  
+
 }

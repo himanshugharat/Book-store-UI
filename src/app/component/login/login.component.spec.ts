@@ -27,7 +27,7 @@ fdescribe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
-        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,RouterTestingModule,
+        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule, RouterTestingModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
@@ -37,7 +37,7 @@ fdescribe('LoginComponent', () => {
         MatInputModule,
         BrowserModule,
         BrowserAnimationsModule,
-        ],
+      ],
       providers: [FirebaseCrudService]
     })
       .compileComponents();

@@ -23,9 +23,9 @@ fdescribe('HeaderComponent', () => {
   let el: HTMLElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
-      imports:[RouterTestingModule,MatToolbarModule,
-        MatTooltipModule,BrowserModule,
+      declarations: [HeaderComponent],
+      imports: [RouterTestingModule, MatToolbarModule,
+        MatTooltipModule, BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
@@ -36,7 +36,7 @@ fdescribe('HeaderComponent', () => {
         ReactiveFormsModule,
         MatMenuModule,]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -55,8 +55,7 @@ fdescribe('HeaderComponent', () => {
     expect(component.route.url).toEqual('/')
   });
   it('when clicked on button navigate should navigate to route ', () => {
-    let dataa=component.ngOnInit()
-    let data=component.email
+    let dataa = component.ngOnInit()
     expect(dataa).toEqual()
   });
   it('when clicked on button navigate should navigate to route ', () => {

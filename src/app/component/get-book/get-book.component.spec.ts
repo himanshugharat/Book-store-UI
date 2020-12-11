@@ -27,7 +27,7 @@ import { GetBookComponent } from './get-book.component';
 fdescribe('GetBookComponent', () => {
   let component: GetBookComponent;
   let fixture: ComponentFixture<GetBookComponent>;
-  let service:FirebaseCrudService
+  let service: FirebaseCrudService
   let de: DebugElement;
   let el: HTMLElement;
   beforeEach(async () => {
@@ -44,9 +44,9 @@ fdescribe('GetBookComponent', () => {
         BrowserModule,
         BrowserAnimationsModule, MatExpansionModule,
         Ng2SearchPipeModule,
-        NgxPaginationModule,MatFormFieldControl],
+        NgxPaginationModule, MatFormFieldControl],
       declarations: [GetBookComponent],
-      providers:[FirebaseCrudService]
+      providers: [FirebaseCrudService]
     })
       .compileComponents();
   });
@@ -60,8 +60,8 @@ fdescribe('GetBookComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('when given service should return observable',()=>{
-    el=fixture.debugElement.query(By.css('.sortType')).nativeElement
+  it('when given service should return observable', () => {
+    el = fixture.debugElement.query(By.css('.sortType')).nativeElement
     el.click()
     expect(component.selectChange(' ')).toHaveBeenCalledTimes(1)
   })

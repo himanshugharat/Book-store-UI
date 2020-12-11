@@ -15,14 +15,14 @@ interface bookBy {
 
 
 export class GetBookComponent implements OnInit {
-  constructor(public bookservice: FirebaseCrudService,public shared:SharedService) { }
+  constructor(public bookservice: FirebaseCrudService, public shared: SharedService) { }
   book = []
   sortType
   //dataa
   dataa
   page: number = 1;
   ngOnInit(): void {
-    this.getData() 
+    this.getData()
   }
   selectChange(val) {
     switch (val) {
@@ -47,9 +47,9 @@ export class GetBookComponent implements OnInit {
     this.bookservice.getAllMethod('book').subscribe(re => {
       re.forEach(book => this.book.push(book))
     })
-    this.shared.data.subscribe(data=>{this.dataa=data})
+    this.shared.data.subscribe(data => { this.dataa = data })
   }
-  
+
   data: bookBy[] = [
     { value: 'title-0', viewValue: 'sort by title' },
     { value: 'author-1', viewValue: 'sort by author' },

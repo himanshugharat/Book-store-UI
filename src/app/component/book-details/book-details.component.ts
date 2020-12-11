@@ -35,16 +35,16 @@ export class BookDetailsComponent implements OnInit {
       this.book.push(re)
     })
   }
-bagButton(){
-  this.bookservice.getMethodBy('bag', "value.bookId", this.id).subscribe(re => {
-    re.length>0?this.bagButtonActive=true:this.bagButtonActive=false
-  })
-}
-wishlistButton(){
-  this.bookservice.getMethodBy('wishlist', "value.bookId", this.id).subscribe(re => {
-    re.length>0?this.wishlistButtonActive=true:this.wishlistButtonActive=false
-  })
-}
+  bagButton() {
+    this.bookservice.getMethodBy('bag', "value.bookId", this.id).subscribe(re => {
+      re.length > 0 ? this.bagButtonActive = true : this.bagButtonActive = false
+    })
+  }
+  wishlistButton() {
+    this.bookservice.getMethodBy('wishlist', "value.bookId", this.id).subscribe(re => {
+      re.length > 0 ? this.wishlistButtonActive = true : this.wishlistButtonActive = false
+    })
+  }
   submitReview() {
     if (localStorage.getItem('token') !== null) {
       let reviewData = {

@@ -8,11 +8,11 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 })
 export class GoogleService {
 
-  constructor( public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth) { }
   // googleAuth(){
   //   return this.
   // }
-  AuthLogin(){
+  AuthLogin() {
     this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }
 }

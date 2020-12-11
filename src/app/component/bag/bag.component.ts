@@ -127,7 +127,7 @@ export class BagComponent implements OnInit {
       this.ngOnInit()
     }).then(re => {
       this.snakbar.open("book removed successfully", "success", { duration: 2000 })
-    }).catch(err=>{
+    }).catch(err => {
       this.snakbar.open("unable to  removed book", "failed", { duration: 2000 })
     })
   }

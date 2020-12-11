@@ -11,10 +11,8 @@ export class LoginBoardComponent implements OnInit {
 
   constructor(public auth: AngularFireAuth) {
   }
-  
-
   ngOnInit(): void {
-    
+
   }
 
 }

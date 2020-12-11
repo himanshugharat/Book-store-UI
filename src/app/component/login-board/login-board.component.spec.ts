@@ -8,9 +8,9 @@ describe('LoginBoardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginBoardComponent ]
+      declarations: [LoginBoardComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
