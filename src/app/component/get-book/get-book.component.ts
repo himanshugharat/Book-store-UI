@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedService } from 'src/app/service/shared/shared.service';
 
 interface bookBy {
   value: string;
@@ -14,12 +15,14 @@ interface bookBy {
 
 
 export class GetBookComponent implements OnInit {
-  constructor(public bookservice: FirebaseCrudService) { }
+  constructor(public bookservice: FirebaseCrudService,public shared:SharedService) { }
   book = []
   sortType
+  //dataa
+  dataa
   page: number = 1;
   ngOnInit(): void {
-    this.getData()
+    this.getData() 
   }
   selectChange(val) {
     switch (val) {
@@ -44,6 +47,7 @@ export class GetBookComponent implements OnInit {
     this.bookservice.getAllMethod('book').subscribe(re => {
       re.forEach(book => this.book.push(book))
     })
+    this.shared.data.subscribe(data=>{this.dataa=data})
   }
   
   data: bookBy[] = [

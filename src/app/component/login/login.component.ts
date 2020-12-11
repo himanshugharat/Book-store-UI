@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 import { AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import  firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.logout()
+  }
+  loginGoogle() {
+    return this.firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
   async signin(email, pass) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, pass).then(re => {

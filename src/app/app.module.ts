@@ -42,7 +42,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { WildcardComponent } from './component/wildcard/wildcard.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +63,7 @@ import {MatMenuModule} from '@angular/material/menu';
     OrderSuccessComponent,
     ProfileComponent,
     WildcardComponent,
+    
 
   ],
   imports: [
@@ -89,7 +92,10 @@ import {MatMenuModule} from '@angular/material/menu';
     MatRadioModule,
     MatTooltipModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    Ng2SearchPipeModule,
+    AngularFireAuthModule,
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

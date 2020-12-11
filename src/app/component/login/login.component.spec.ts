@@ -12,12 +12,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 import { environment } from 'src/environments/environment';
 
 import { LoginComponent } from './login.component';
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de: DebugElement;
@@ -26,7 +27,7 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
-        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,
+        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,RouterTestingModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
@@ -35,7 +36,8 @@ describe('LoginComponent', () => {
         MatToolbarModule,
         MatInputModule,
         BrowserModule,
-        BrowserAnimationsModule],
+        BrowserAnimationsModule,
+        ],
       providers: [FirebaseCrudService]
     })
       .compileComponents();
@@ -52,17 +54,17 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  fit('when given incorrect data to form then return form inValid', () => {
+  it('when given incorrect data to form then return form inValid', () => {
     component.login.controls['email'].setValue('');
     component.login.controls['password'].setValue('');
     expect(component.login.valid).toBeFalsy();
   })
-  fit('when given correct data to form then return form Valid', () => {
+  it('when given correct data to form then return form Valid', () => {
     component.login.controls['email'].setValue('nopoja2033@hebgsw.com');
     component.login.controls['password'].setValue('gharat133');
     expect(component.login.valid).toBeTruthy();
   })
-  fit("when button clicked then return button cliked time", () => {
+  it("when button clicked then return button cliked time", () => {
     spyOn(component, 'onSubmit');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();

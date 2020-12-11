@@ -26,10 +26,12 @@ export class WishlistComponent implements OnInit {
         element.forEach(element => {
           this.bookService.getMethodBy('book', 'id', element.value.bookId).subscribe(re => {
             this.wishlistBook.push(re)
+            
           })
         });
       })
     })
+    return this.wishlistBook
   }
   removeBook(id, index) {
     this.bookService.deleteMethod('wishlist', id[index].docId).then(re => {

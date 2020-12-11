@@ -1,9 +1,19 @@
 <mat-toolbar class="header">
-    <span>
+    <span fxLayout="row " class="dat">
         <button mat-icon-button>
             <mat-icon>menu_book</mat-icon>
         </button>
         <span class="title">Bookstore</span>
+        <mat-card class="input-card">
+            <!-- <mat-icon>search</mat-icon> -->
+        <span [formGroup]="header" class="input-feild">
+            <!-- <mat-form-field class="example-form-field" appearance="outline"> -->
+                <!-- <mat-label>Password</mat-label> -->
+                <input matInput type="text" formControlName="dataa" autocomplete="off" placeholder="search">
+            <!-- </mat-form-field> -->
+            <button mat-button (click)="search(header.value)"><mat-icon>search</mat-icon></button>
+          </span>
+          </mat-card>
     </span>
     <span class="toolbar"></span>
     <span class="icon">
@@ -24,10 +34,23 @@
                 </div>
             </div>
         </mat-menu>
-        <button mat-icon-button #tooltip="matTooltip" matTooltip="cart">
+        <mat-menu #menuLogout="matMenu">
+            <div class="detail">
+                <div fxLayout="row wrap" fxLayoutAlign="center">
+                    logout here
+                    {{name}}
+                    email:{{email}}
+                </div>
+                <div fxLayout="row" fxLayoutAllign="end" class="button">
+
+                    <button mat-stroked-button  (click)="logout()">logout</button>
+                </div>
+            </div>
+        </mat-menu>
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="cart" class="bag" >
             <mat-icon routerLink="bag">shopping_cart</mat-icon>
         </button>
-        <button mat-icon-button #tooltip="matTooltip" matTooltip="logout" (click)="logout()">
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="logout" [matMenuTriggerFor]="menuLogout">
             <mat-icon routerLink="board/login">power_settings_new</mat-icon>
         </button>
     </span>

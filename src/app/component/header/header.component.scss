@@ -19,13 +19,16 @@
 .button {
   width: 100%;
 }
-@media screen and (min-width: 992px) {
+.mat-icon-button{
+  padding-top: 1%;
+}
+@media screen and (min-width: 990px) {
   .header {
     background-color: #8f2b2f;
     color: white;
     font-size: x-large;
   }
-  .header span {
+  .header .dat {
     margin-left: 10%;
   }
   .icon {
@@ -33,7 +36,7 @@
   }
 }
 .title {
-  padding-top: 30px;
+  padding-top: 10px;
 }
 .material-icons {
   padding-bottom: 75%;
@@ -41,4 +44,25 @@
 .detail {
   padding: 10px;
   width: 200px;
+}
+.input-card {
+  width: 40vw;
+  height: 8vh;
+  margin-left: 4vw;
+  transition: none !important;
+  box-shadow: none !important;
+  background-color: #f1f3f4;
+}
+.input-feild {
+  width: 44.6vw;
+  margin-top: -40px;
+  // padding-left: 35px;
+}
+.input-feild input {
+  width: 80%;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: lighter;
+  background-color: #f1f3f4;
 }

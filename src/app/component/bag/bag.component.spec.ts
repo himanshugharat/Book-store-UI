@@ -14,12 +14,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.service';
 import { environment } from 'src/environments/environment';
 
 import { BagComponent } from './bag.component';
 
-describe('BagComponent', () => {
+fdescribe('BagComponent', () => {
   let component: BagComponent;
   let fixture: ComponentFixture<BagComponent>;
   let de: DebugElement;
@@ -28,7 +29,7 @@ describe('BagComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [BagComponent],
       imports: [AngularFireModule.initializeApp(environment.firebase, 'bookstore'),
-        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,Router,
+        AngularFirestoreModule, MatSnackBarModule, FlexLayoutModule,RouterTestingModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
