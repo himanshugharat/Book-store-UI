@@ -5,6 +5,7 @@ import { FirebaseCrudService } from 'src/app/service/firebase/firebase-crud.serv
 import { AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router';
 import firebase from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,24 @@ export class LoginComponent implements OnInit {
     password: new FormControl("", Validators.minLength(8))
   })
   data = []
-  constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar, public firebaseAuth: AngularFireAuth, public route: Router) { }
+  constructor(public firebaseService: FirebaseCrudService, public snackbar: MatSnackBar, public firebaseAuth: AngularFireAuth, public route: Router,public db:AngularFirestore) { }
 
   ngOnInit(): void {
     this.logout()
+    console.log("logout")
   }
   loginGoogle() {
-    return this.firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(re=>{
+      this.db.collection("user").doc(re.user.uid).set({
+        email:re.user.email,
+        name:re.user.displayName,
+        phone:re.user.phoneNumber
+      })
+    });
+  }
+  loginFacebook(){
+    var provider=new firebase.auth.FacebookAuthProvider()
+    firebase.auth().signInWithPopup(provider)
   }
   async signin(email, pass) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, pass).then(re => {
@@ -37,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
   logout() {
     this.firebaseAuth.signOut()
-    localStorage.removeItem('user')
+   //localStorage.removeItem('user')
   }
   onSubmit(value) {
     this.firebaseService.getMethodBy('user', 'email', value.email).subscribe(re => {

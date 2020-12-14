@@ -2,7 +2,7 @@
   <div fxFlex="10%"></div>
   <div fxFlex="80%">
     <mat-card>
-      <mat-card-title>My Wishlist (02)</mat-card-title>
+      <mat-card-title>My Wishlist ({{wishlist.length}})</mat-card-title>
       <hr>
       <div>
         <mat-card-content *ngFor="let book of wishlistBook ;let i = index">

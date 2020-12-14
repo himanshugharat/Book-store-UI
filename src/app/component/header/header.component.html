@@ -6,17 +6,17 @@
         <span class="title">Bookstore</span>
         <mat-card class="input-card">
             <span [formGroup]="header" class="input-feild">
-                <input matInput type="text" formControlName="dataa" autocomplete="off" placeholder="search">
-                <button mat-button (click)="search(header.value)">
+                <button mat-button >
                     <mat-icon>search</mat-icon>
                 </button>
+                <input matInput type="text" formControlName="dataa" autocomplete="off" placeholder="search">
             </span>
         </mat-card>
     </span>
     <span class="toolbar"></span>
     <span class="icon">
         <button mat-icon-button #tooltip="matTooltip" matTooltip="wishlist">
-            <mat-icon routerLink="list">favorite_border</mat-icon>
+            <mat-icon  matBadge="{{list}}" matBadgeColor="warn" routerLink="list">favorite_border</mat-icon>
         </button>
         <button mat-icon-button #tooltip="matTooltip" matTooltip="profile" [matMenuTriggerFor]="menu">
             <mat-icon>perm_identity</mat-icon>
@@ -45,7 +45,7 @@
             </div>
         </mat-menu>
         <button mat-icon-button #tooltip="matTooltip" matTooltip="cart" class="bag">
-            <mat-icon routerLink="bag">shopping_cart</mat-icon>
+            <mat-icon matBadge="{{bag}}" matBadgeColor="warn" routerLink="bag">shopping_cart</mat-icon>
         </button>
         <button mat-icon-button #tooltip="matTooltip" matTooltip="logout" [matMenuTriggerFor]="menuLogout">
             <mat-icon routerLink="board/login">power_settings_new</mat-icon>

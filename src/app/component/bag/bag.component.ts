@@ -87,7 +87,7 @@ export class BagComponent implements OnInit {
 
   addDataToOrder() {
     let value = {
-      totalPrice: this.bagBook[0].price * this.noOfItem,
+      totalPrice: this.total(),
       bookDetail: this.bagBook[0][0],
       custDetail: this.custData,
       userDetail: {
