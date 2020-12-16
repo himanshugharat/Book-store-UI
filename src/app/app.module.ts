@@ -42,9 +42,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import { WildcardComponent } from './component/wildcard/wildcard.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,8 +64,8 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
     OrderSuccessComponent,
     ProfileComponent,
     WildcardComponent,
-    
-
+    PageNotFoundComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -93,9 +94,9 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
     MatTooltipModule,
     FormsModule,
     MatMenuModule,
-    Ng2SearchPipeModule,
     AngularFireAuthModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase)
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
+    FilterPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

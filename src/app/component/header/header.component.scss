@@ -47,7 +47,7 @@
 }
 .input-card {
   width: 40vw;
-  height: 8vh;
+  height: 5vh;
   margin-left: 4vw;
   transition: none !important;
   box-shadow: none !important;
@@ -55,6 +55,7 @@
 }
 .input-feild {
   width: 40.6vw;
+  height: 3vh;
   padding-bottom: 10px !important;
   // padding-left: 35px;
 }
@@ -65,4 +66,7 @@
   font-size: 18px;
   font-weight: lighter;
   background-color: #f1f3f4;
+}
+mat-card{
+  padding: 0px;
 }

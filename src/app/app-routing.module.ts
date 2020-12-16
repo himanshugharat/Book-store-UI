@@ -9,6 +9,7 @@ import { LoginBoardComponent } from './component/login-board/login-board.compone
 import { LoginComponent } from './component/login/login.component';
 import { OrderSuccessComponent } from './component/order-success/order-success.component';
 import { OrderComponent } from './component/order/order.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { WildcardComponent } from './component/wildcard/wildcard.component';
@@ -22,7 +23,9 @@ const routes: Routes = [{
 },
 { path: "forgotPassword", component: ForgotPasswordComponent },
 { path: "card", component: WildcardComponent },
+{path: "", component: LoginBoardComponent},
 {
+  
   path: "dashboard", component: DashboardComponent, data: { breadcrumb: 'Home' },
   children: [
     { path: "", component: GetBookComponent, data: { breadcrumb: 'Detail' } },
@@ -34,7 +37,7 @@ const routes: Routes = [{
     { path: "profile", component: ProfileComponent, data: { breadcrumb: 'Profile' }, canActivate: [AuthGuardService] },
   ]
 },
-
+{path:"**",component:PageNotFoundComponent}
 ];
 
 @NgModule({

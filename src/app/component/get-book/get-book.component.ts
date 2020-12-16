@@ -20,9 +20,12 @@ export class GetBookComponent implements OnInit {
   sortType
   //dataa
   dataa
+  datauq={ title: '' };
+  count
   page: number = 1;
   ngOnInit(): void {
     this.getData()
+    
   }
   selectChange(val) {
     switch (val) {
@@ -46,8 +49,11 @@ export class GetBookComponent implements OnInit {
   getData() {
     this.bookservice.getAllMethod('book').subscribe(re => {
       re.forEach(book => this.book.push(book))
+      setTimeout(()=>{this.count=document.querySelector(".bookData").childElementCount},0)
     })
-    this.shared.data.subscribe(data => { this.dataa = data })
+    this.shared.data.subscribe(data => { this.dataa = data 
+      this.datauq.title = this.dataa})
+   
   }
 
   data: bookBy[] = [
@@ -57,6 +63,8 @@ export class GetBookComponent implements OnInit {
   ];
   review() {
     return Math.floor(Math.random() * (5 - 1) + 1)
-
+  }
+  item(){
+    this.count=document.querySelector(".bookData").childElementCount
   }
 }

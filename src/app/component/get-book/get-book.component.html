@@ -1,6 +1,8 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+<script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
 <div class="mainbody">
   <div fxLayout="row wrap" fxLayoutAlign="center">
-    <span class="title">Books (12 item)</span>
+    <span class="title">Books ({{count}} item)</span>
     <span class="toolbar"></span>
     <mat-form-field appearance="outline">
       <mat-label>sort by</mat-label>
@@ -11,8 +13,8 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div fxLayout="row wrap" fxLayoutAlign="center">
-    <div *ngFor="let book of book | paginate: { itemsPerPage: 12, currentPage: page }|filter:dataa" class="main"
+  <div fxLayout="row wrap" class="bookData">
+    <div *ngFor="let book of book | paginate: { itemsPerPage: 12, currentPage: page }|filterBy:datauq" class="main"
       fxLayoutGap="20px">
       <mat-card class="grid-item" routerLink="detail/{{book.id}}">
         <mat-card-content class="cover">
@@ -37,6 +39,6 @@
     </div>
   </div>
   <div fxLayoutAlign="center">
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    <pagination-controls (pageChange)="page = $event" (click)="item()"></pagination-controls>
   </div>
 </div>
