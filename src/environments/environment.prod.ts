@@ -1,13 +1,14 @@
+require('dotenv').config()
 export const environment = {
   production: true,
   firebase:{
-    apiKey: "AIzaSyBohSL3MAwTyaihIpfB7SUiXsgCsO-8hMY",
-    authDomain: "bookstore-da1ba.firebaseapp.com",
-    databaseURL: "https://bookstore-da1ba.firebaseio.com",
-    projectId: "bookstore-da1ba",
-    storageBucket: "bookstore-da1ba.appspot.com",
-    messagingSenderId: "355374707203",
-    appId: "1:355374707203:web:85584599d6bef090e31436",
-    measurementId: "G-NY3FDFYB3H"
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
   }
 };

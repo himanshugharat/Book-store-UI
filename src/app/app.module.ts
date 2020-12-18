@@ -46,6 +46,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,7 +99,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     FilterPipeModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
